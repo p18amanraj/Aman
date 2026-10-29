@@ -1,2121 +1,618 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Resume - Aman Raj | Program & Operations Management</title>
-    <meta name="description" content="Aman Raj - Experienced Program & Operations Manager with 5+ years in strategy, data analytics, and process optimization. Proven track record of ₹8L cost savings and 77% prediction accuracy.">
-    <meta name="keywords" content="Program Manager, Operations Manager, Data Analytics, Tableau, Strategy, Lean Six Sigma, Process Optimization, Cost Reduction">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Aman Raj",
-        "jobTitle": "Program & Operations Manager",
-        "email": "p18amanr@iimidr.ac.in",
-        "telephone": "8987575087",
-        "url": "https://linkedin.com/in/p18amanr"
-    }
-    </script>
-    
-    <style>
-        :root {
-            --primary-bg: #f8f7f4;
-            --primary-text: #3d405b;
-            --accent-color: #8d9f7c;
-            --highlight-bg: #e0e0d1;
-            --secondary-text: #81849a;
-            --card-bg: #ffffff;
-            --border-color: #e0e0d1;
-            --modal-bg: #ffffff;
-            --modal-text: #3d405b;
-            --dropdown-bg: #ffffff;
-            --dropdown-text: #3d405b;
-            --dropdown-hover: #f3f4f6;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-        }
-
-        [data-theme="dark"] {
-            --primary-bg: #0f0f0f;
-            --primary-text: #f1f1f1;
-            --accent-color: #9db87d;
-            --highlight-bg: #2a2a2a;
-            --secondary-text: #c0c0c0;
-            --card-bg: #262626;
-            --border-color: #404040;
-            --modal-bg: #262626;
-            --modal-text: #f1f1f1;
-            --dropdown-bg: #262626;
-            --dropdown-text: #f1f1f1;
-            --dropdown-hover: #333333;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--primary-text);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .timeline-item .details {
-            display: none;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .timeline-item.active .details {
-            display: block;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        .timeline-item.active .title-container svg {
-            transform: rotate(90deg);
-        }
-
-        .highlight {
-            background-color: var(--highlight-bg);
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            box-shadow: 0 0 10px rgba(141, 159, 124, 0.3);
-        }
-
-        [data-theme="dark"] .highlight {
-            box-shadow: 0 0 10px rgba(157, 184, 125, 0.4);
-        }
-
-        mark {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0 2px;
-            border-radius: 2px;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                max-height: 0;
-            }
-            to {
-                opacity: 1;
-                max-height: 500px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .progress-bar {
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
-
-        .floating-action {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .theme-toggle {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: var(--highlight-bg);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            border: none;
-        }
-
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        [data-theme="dark"] .theme-toggle::before {
-            transform: translateX(30px);
-        }
-
-        .contact-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        [data-theme="dark"] .contact-modal {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .contact-modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: var(--modal-bg);
-            color: var(--modal-text);
-            padding: 2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            max-width: 40rem;
-            width: 100%;
-            margin: 1rem;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        [data-theme="dark"] .modal-content {
-            box-shadow: 0 25px 50px -12px rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            background: var(--card-bg);
-            color: var(--primary-text);
-            transition: border-color 0.3s ease;
-        }
-
-        .modal-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(141, 159, 124, 0.1);
-        }
-
-        [data-theme="dark"] .modal-input:focus {
-            box-shadow: 0 0 0 3px rgba(157, 184, 125, 0.2);
-        }
-
-        .skill-badge {
-            background: linear-gradient(135deg, var(--accent-color), #7a8a6a);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            display: inline-block;
-            margin: 2px;
-            transition: transform 0.2s ease;
-            cursor: pointer;
-        }
-
-        [data-theme="dark"] .skill-badge {
-            background: linear-gradient(135deg, var(--accent-color), #8b9f76);
-        }
-
-        .skill-badge:hover {
-            transform: scale(1.05);
-        }
-
-        .proficiency-bar {
-            height: 8px;
-            background: var(--border-color);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 0.5rem;
-        }
-
-        .proficiency-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-color), #7a8a6a);
-            border-radius: 4px;
-            transition: width 0.8s ease;
-        }
-
-        .experience-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            color: var(--primary-text);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        [data-theme="dark"] .stat-card {
-            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .stat-card:hover {
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
-        }
-
-        .achievement-badge {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #333;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            color: var(--primary-text);
-            border-radius: 0.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] .card {
-            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -1px rgba(255, 255, 255, 0.1);
-        }
-
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        [data-theme="dark"] .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .nav-bg {
-            background-color: var(--primary-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-        }
-
-        .search-input {
-            border: 2px solid var(--border-color);
-            background-color: var(--card-bg);
-            color: var(--primary-text);
-        }
-
-        .search-input:focus {
-            ring-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .search-results {
-            background: var(--dropdown-bg);
-            color: var(--dropdown-text);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .search-results {
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-        }
-
-        .search-result-item {
-            color: var(--dropdown-text);
-            transition: background-color 0.2s ease;
-        }
-
-        .search-result-item:hover {
-            background-color: var(--dropdown-hover);
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background-color: var(--border-color);
-            color: var(--primary-text);
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--highlight-bg);
-        }
-
-        .timeline-border {
-            border-color: var(--border-color);
-        }
-
-        .timeline-dot {
-            background-color: var(--accent-color);
-        }
-
-        [data-theme="dark"] .nav-link {
-            color: var(--primary-text);
-        }
-
-        [data-theme="dark"] .nav-link:hover {
-            background-color: var(--highlight-bg);
-        }
-
-        .availability-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-size: 0.875rem;
-            color: var(--success-color);
-        }
-
-        .availability-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success-color);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        .metric-comparison {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            color: var(--secondary-text);
-        }
-
-        .benchmark-indicator {
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            font-weight: 600;
-        }
-
-        .above-average {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-        }
-
-        .industry-standard {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: var(--warning-color);
-        }
-
-        .project-metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            background: var(--highlight-bg);
-            border-radius: 4px;
-            margin: 0.25rem 0;
-        }
-
-        .project-before-after {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 1rem;
-            align-items: center;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--highlight-bg);
-            border-radius: 8px;
-        }
-
-        .before-after-arrow {
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .skills-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-        }
-
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-        }
-
-        .skill-info {
-            flex-grow: 1;
-            margin-right: 1rem;
-        }
-
-        .skill-level {
-            font-size: 0.75rem;
-            color: var(--secondary-text);
-        }
-
-        .proficiency-level {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .project-before-after {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .before-after-arrow {
-                transform: rotate(90deg);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .experience-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-matrix {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-link {
-                font-size: 0.75rem;
-                padding: 0.25rem 0.5rem;
-            }
-        }
-
-        @media print {
-            .floating-action,
-            .contact-modal,
-            .progress-bar {
-                display: none !important;
-            }
-
-            .timeline-item .details {
-                display: block !important;
-            }
-
-            .card {
-                break-inside: avoid;
-                margin-bottom: 1rem;
-            }
-
-            body {
-                font-size: 12px;
-                line-height: 1.4;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aman Raj: program delivery and operations lead. Electoral research and field operations across 898 constituencies in UP, Gujarat, Delhi and Bihar. MBA, IIM Indore.">
+<meta property="og:title" content="Aman Raj">
+<meta property="og:description" content="Program delivery, strategy and field operations. 4 state elections, 898 constituencies, 34 lakh+ samples.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#5A3E9E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='4' width='10' height='24' rx='5' fill='%235A3E9E'/%3E%3C/svg%3E">
+<title>Aman Raj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: one column field-report page; a sticky nav, a hero with a field ledger, then a tile map of India as the centerpiece. Accent is indelible-ink violet. */
+:root{
+  --bg:#F5F5F8;
+  --surface:#FFFFFF;
+  --fg:#18162A;
+  --muted:#626078;
+  --line:#DEDCE8;
+  --accent:#5A3E9E;
+  --accent-soft:#ECE7F7;
+  --tile:#E6E4EE;
+  --tile-fg:#8A879E;
+  --ink1:#C9BDEA; --ink2:#9B84D6; --ink3:#7357BC; --ink4:#4A2F8C;
+  --ink-fg:#FFFFFF;
+  --good:#2F7A55;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius:10px;
+  --wrap:1080px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121019; --surface:#1B1826; --fg:#ECEAF4; --muted:#A3A0B8; --line:#2E2A3E;
+    --accent:#B39DF2; --accent-soft:#2A2340; --tile:#25212F; --tile-fg:#6F6B84;
+    --ink1:#4A3D73; --ink2:#6B54A8; --ink3:#8C70D6; --ink4:#B9A2F5; --ink-fg:#120F1C;
+    --good:#6FCB9C; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121019; --surface:#1B1826; --fg:#ECEAF4; --muted:#A3A0B8; --line:#2E2A3E;
+  --accent:#B39DF2; --accent-soft:#2A2340; --tile:#25212F; --tile-fg:#6F6B84;
+  --ink1:#4A3D73; --ink2:#6B54A8; --ink3:#8C70D6; --ink4:#B9A2F5; --ink-fg:#120F1C;
+  --good:#6FCB9C; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:17px;color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:8px}
+.inkmark{display:inline-block;width:7px;height:18px;border-radius:5px 5px 2px 2px;background:var(--accent)}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav ul a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 10px;border-radius:6px}
+.nav ul a:hover{color:var(--fg);background:var(--accent-soft)}
+@media (max-width:720px){.nav ul{display:none}}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;padding-block:64px 56px;align-items:start}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--good);font-family:var(--f-mono);margin-bottom:20px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good)}
+.hero h1{font-size:clamp(40px,6.4vw,68px);font-weight:800;letter-spacing:-.02em}
+.hero h1 .inkmark{width:12px;height:.7em;margin-right:14px;vertical-align:.02em}
+.hero .lede{font-size:clamp(19px,2.2vw,23px);font-family:var(--f-display);font-weight:500;margin-top:18px;max-width:30ch;line-height:1.3}
+.hero .sub{color:var(--muted);margin-top:16px;max-width:58ch}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--fg);background:var(--surface)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--f-body);padding:11px 18px;border-radius:8px;text-decoration:none;cursor:pointer;border:1px solid transparent}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{border-color:var(--line);color:var(--fg);background:var(--surface)}
+.btn:hover{filter:brightness(1.07)}
+
+.ledger{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 18px}
+.ledger h2{font-size:15px;font-family:var(--f-mono);font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.ledger dl{margin:14px 0 0;display:grid;gap:0}
+.ledger .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px dashed var(--line)}
+.ledger dt{color:var(--muted);font-size:14px}
+.ledger dd{margin:0;font-family:var(--f-display);font-weight:700;font-size:26px;font-variant-numeric:tabular-nums}
+.ledger .note{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--f-mono)}
+
+/* sections */
+section.block{padding-block:64px;border-top:1px solid var(--line)}
+.head{display:grid;gap:10px;margin-bottom:32px;max-width:64ch}
+.head h2{font-size:clamp(28px,3.6vw,38px);font-weight:700;letter-spacing:-.01em}
+.head p{color:var(--muted)}
+
+/* impact strip */
+.impact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+.impact div{padding:20px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.impact div:nth-child(3n){border-right:0}
+.impact div:nth-last-child(-n+3){border-bottom:0}
+.impact b{display:block;font-family:var(--f-display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);line-height:1.1}
+.impact span{display:block;font-size:14px;color:var(--muted);margin-top:6px}
+@media (max-width:720px){
+  .impact{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .impact div{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .impact div:nth-child(2n){border-right:0!important}
+  .impact div:nth-last-child(-n+2){border-bottom:0!important}
+}
+
+/* coverage */
+.coverage{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:start}
+.map{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,auto);gap:5px;width:100%;max-width:380px}
+.tile{aspect-ratio:1;max-width:100%;border-radius:6px;background:var(--tile);color:var(--tile-fg);font:500 11px var(--f-mono);display:flex;align-items:center;justify-content:center;border:0;padding:0;cursor:default}
+.tile.on{cursor:pointer;color:var(--ink-fg);font-weight:600;font-size:12px;transition:transform .15s}
+.tile.on:hover,.tile.on.sel{transform:scale(1.08);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--fg)}
+.l1{background:var(--ink1)}.l2{background:var(--ink2)}.l3{background:var(--ink3)}.l4{background:var(--ink4)}
+.l1{color:var(--fg)!important}
+.legend{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:12px;color:var(--muted);font-family:var(--f-mono);flex-wrap:wrap}
+.legend i{display:inline-block;width:16px;height:12px;border-radius:3px}
+.mapcap{font-size:12px;color:var(--muted);margin-top:6px}
+.states{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.state{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;transition:border-color .15s,box-shadow .15s;min-width:0}
+.state.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.state .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.state h3{font-size:20px}
+.state .yr{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.state .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}
+.state .nums b{display:block;font:700 20px var(--f-display);font-variant-numeric:tabular-nums}
+.state .nums span{font-size:12px;color:var(--muted);line-height:1.3;display:block}
+.state p{font-size:14px;color:var(--muted)}
+.state .extra{margin-top:10px;font-size:13px;padding:8px 10px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
+@media (max-width:860px){.coverage{grid-template-columns:minmax(0,1fr)}.map{margin:0 auto}}
+@media (max-width:560px){.states{grid-template-columns:minmax(0,1fr)}}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--surface);display:grid;gap:14px;align-content:start;min-width:0}
+.case .tag{font:500 12px var(--f-mono);color:var(--muted)}
+.case h3{font-size:21px}
+.case .result{font:700 26px var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.case dl{margin:0;display:grid;gap:10px}
+.case dt{font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.case dd{margin:2px 0 0;font-size:15px}
+@media (max-width:720px){.cases{grid-template-columns:minmax(0,1fr)}}
+
+/* timeline */
+.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.job{position:relative;padding:0 0 36px 28px;display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:24px}
+.job:last-child{padding-bottom:4px}
+.job::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.job.break::before{background:var(--accent)}
+.job .when{font:500 13px var(--f-mono);color:var(--muted);padding-top:3px}
+.job .where{font-size:14px;color:var(--muted)}
+.job h3{font-size:19px}
+.job ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
+.job li{font-size:15px}
+.job li::marker{color:var(--accent)}
+.subrole{margin-top:16px}
+.subrole h4{margin:0;font-size:15px;font-weight:600}
+.subrole .when2{font:500 12px var(--f-mono);color:var(--muted)}
+@media (max-width:720px){.job{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* upsc */
+.upsc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.steps li{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.steps li:last-child{border-bottom:0}
+.dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 13px var(--f-mono);border:2px solid var(--line);color:var(--muted)}
+.done .dot{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.now .dot{border-color:var(--accent);color:var(--accent)}
+.steps b{display:block;font-weight:600}
+.steps small{color:var(--muted);font-size:13px}
+.pill{font:500 12px var(--f-mono);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.done .pill{background:var(--accent-soft);color:var(--accent)}
+.now .pill{border:1px dashed var(--accent);color:var(--accent)}
+.later .pill{color:var(--muted);border:1px solid var(--line)}
+.upsc-copy{display:grid;gap:18px}
+.upsc-copy p{color:var(--fg)}
+.gain{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.gain li{padding-left:16px;border-left:3px solid var(--accent-soft)}
+.gain b{display:block}
+.gain span{color:var(--muted);font-size:15px}
+@media (max-width:860px){.upsc{grid-template-columns:minmax(0,1fr)}}
+
+/* booking */
+.sessions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.session{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--surface);display:flex;flex-direction:column;gap:12px;min-width:0}
+.session .len{font:500 13px var(--f-mono);color:var(--accent)}
+.session h3{font-size:20px}
+.session p{color:var(--muted);font-size:15px;flex:1}
+.session .who{font-size:13px;color:var(--muted)}
+.session .btn{justify-content:center}
+.soon{font:500 12px var(--f-mono);color:var(--muted);text-align:center}
+@media (max-width:860px){.sessions{grid-template-columns:minmax(0,1fr)}}
+
+/* skills + edu */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.skillgroup{margin-bottom:20px}
+.skillgroup h3{font:600 14px var(--f-body);margin-bottom:8px}
+.skillgroup .roles{margin-top:0}
+.edu{display:grid;gap:18px}
+.edu div b{display:block;font-weight:600}
+.edu div span{color:var(--muted);font-size:14px}
+@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:start}
+.cards{display:grid;gap:10px}
+.cline{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.cline .k{font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.cline .v{font-size:16px;word-break:break-word;user-select:all}
+.cline a.v{user-select:auto}
+.copy{font:500 13px var(--f-mono);padding:6px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;white-space:nowrap}
+.resumes{display:grid;gap:8px}
+.resumes a{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--fg);background:var(--surface)}
+.resumes a:hover{border-color:var(--accent)}
+.resumes a span{font:500 12px var(--f-mono);color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
 </head>
-<body class="antialiased">
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
-    
-    <!-- Floating Actions -->
-    <div class="floating-action flex flex-col gap-2">
-        <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle dark/light theme"></button>
-        <button id="contactBtn" class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors" title="Contact me" aria-label="Contact Aman">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-        </button>
-        <button id="backToTop" class="bg-gray-500 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 transition-colors opacity-0 pointer-events-none" title="Back to top">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-            </svg>
-        </button>
-    </div>
+<body>
 
-    <!-- Contact Modal -->
-    <div class="contact-modal" id="contactModal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Get In Touch</h3>
-                <button id="closeModal" class="text-gray-500 hover:text-gray-700" style="color: var(--secondary-text);">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="mb-4 p-3 bg-green-50 border border-green-200 rounded-md">
-                <div class="availability-indicator">
-                    <div class="availability-dot"></div>
-                    <span>Available for immediate opportunities</span>
-                </div>
-                <div class="text-sm mt-1" style="color: var(--secondary-text);">Notice period: Flexible | Location: Remote/Hybrid preferred</div>
-            </div>
-            <form id="contactForm">
-                <div class="mb-4">
-                    <label class="block text-sm font-bold mb-2" style="color: var(--primary-text);">Name</label>
-                    <input type="text" class="modal-input" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-bold mb-2" style="color: var(--primary-text);">Email</label>
-                    <input type="email" class="modal-input" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-bold mb-2" style="color: var(--primary-text);">Company</label>
-                    <input type="text" class="modal-input">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-bold mb-2" style="color: var(--primary-text);">Role/Position</label>
-                    <input type="text" class="modal-input">
-                </div>
-                <div class="mb-6">
-                    <label class="block text-sm font-bold mb-2" style="color: var(--primary-text);">Message</label>
-                    <textarea rows="4" class="modal-input" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary w-full py-2 px-4 rounded-lg">Send Message</button>
-            </form>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="inkmark" aria-hidden="true"></span>Aman Raj</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#upsc">UPSC</a></li>
+        <li><a href="#book">Book a call</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="status">Open to roles now · Remote or relocation</div>
+        <h1><span class="inkmark" aria-hidden="true"></span>Aman Raj</h1>
+        <p class="lede">I run large field programs that have to land on a fixed date.</p>
+        <p class="sub">Six years delivering electoral research and field operations across four states, reporting to the CEO and COO. I have owned programs from sampling design to the final leadership report, controlled a ₹1.2 crore budget per cycle, and led field teams of 600+. MBA from IIM Indore. I spent the last year preparing for the UPSC Civil Services and cleared Prelims 2026.</p>
+        <div class="roles" aria-label="Roles I'm open to">
+          <span class="chip">Program Management</span>
+          <span class="chip">Chief of Staff</span>
+          <span class="chip">Business Operations</span>
+          <span class="chip">Political Consulting</span>
         </div>
+        <div class="cta">
+          <a class="btn primary" href="#book">Book a call</a>
+          <a class="btn ghost" href="#resumes">Download resume</a>
+        </div>
+      </div>
+      <aside class="ledger" aria-label="Field ledger">
+        <h2>Field ledger, 2022–2025</h2>
+        <dl>
+          <div class="row"><dt>States covered</dt><dd>4</dd></div>
+          <div class="row"><dt>Assembly constituencies</dt><dd>898</dd></div>
+          <div class="row"><dt>Samples collected</dt><dd>34 lakh+</dd></div>
+          <div class="row"><dt>Survey rounds</dt><dd>22</dd></div>
+        </dl>
+        <p class="note">13 constituency-level rounds + 9 statewide tracker rounds in Delhi</p>
+      </aside>
     </div>
+  </section>
 
-    <div class="container mx-auto px-4 py-8">
-        <!-- Header -->
-        <header class="text-center mb-6 fade-in">
-            <h1 class="text-4xl md:text-5xl font-bold" style="color: var(--primary-text)">Aman Raj</h1>
-            <p class="text-xl mt-2" style="color: var(--secondary-text)">Program & Operations Management | Strategy & Data Analytics</p>
-            <div class="mt-2 mb-4">
-                <div class="availability-indicator justify-center">
-                    <div class="availability-dot"></div>
-                    <span>Open to new opportunities</span>
-                </div>
-            </div>
-            <div class="mt-4 flex justify-center items-center flex-wrap gap-x-4 gap-y-2">
-                <a href="mailto:p18amanr@iimidr.ac.in" class="hover:opacity-75 transition-opacity" style="color: var(--primary-text)">p18amanr@iimidr.ac.in</a>
-                <span class="hidden sm:inline" style="color: var(--secondary-text)">&bull;</span>
-                <span class="hover:opacity-75 transition-opacity" style="color: var(--primary-text)">8987575087</span>
-                <span class="hidden sm:inline" style="color: var(--secondary-text)">&bull;</span>
-                <a href="https://linkedin.com/in/p18amanr" target="_blank" class="hover:opacity-75 transition-opacity" style="color: var(--primary-text)">linkedin.com/in/p18amanr</a>
-                <span class="hidden sm:inline" style="color: var(--secondary-text)">&bull;</span>
-                <div class="flex gap-2">
-                    <button id="download-pdf" class="btn-primary px-4 py-2 rounded-md text-sm">Download PDF</button>
-                    <button id="download-word" class="btn-secondary px-4 py-2 rounded-md text-sm">Download Word</button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Key Achievement Metrics -->
-        <section class="mb-12 fade-in">
-            <h2 class="text-2xl font-bold text-center mb-6" style="color: var(--primary-text)">Quantified Impact & Achievements</h2>
-            <div class="experience-stats">
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">₹8L</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Cost Savings Delivered</div>
-                    <div class="metric-comparison">
-                        <span>Transport cost optimization</span>
-                        <span class="benchmark-indicator above-average">Above Industry Average</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">77%</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Prediction Accuracy</div>
-                    <div class="metric-comparison">
-                        <span>Electoral prediction program</span>
-                        <span class="benchmark-indicator above-average">High Accuracy</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">600+</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Team Members Trained</div>
-                    <div class="metric-comparison">
-                        <span>Field agent onboarding program</span>
-                        <span class="benchmark-indicator industry-standard">Large Scale</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">40%</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Operational Visibility Increase</div>
-                    <div class="metric-comparison">
-                        <span>Through Tableau dashboards</span>
-                        <span class="benchmark-indicator above-average">High Impact</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">25%</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Efficiency Improvement</div>
-                    <div class="metric-comparison">
-                        <span>Operations optimization</span>
-                        <span class="benchmark-indicator above-average">Process Excellence</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="text-2xl font-bold" style="color: var(--accent-color)">5.5 Lakhs+</div>
-                    <div class="text-sm" style="color: var(--secondary-text)">Survey Samples Managed</div>
-                    <div class="metric-comparison">
-                        <span>Multi-state program</span>
-                        <span class="benchmark-indicator industry-standard">Enterprise Scale</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Navigation & Search -->
-        <nav class="sticky top-0 z-10 mb-12 rounded-lg shadow-sm p-2 nav-bg">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-                <ul class="flex justify-center items-center flex-wrap gap-x-1 md:gap-x-2">
-                    <li><a href="#executive-summary" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Executive Summary</a></li>
-                    <li><a href="#skills-matrix" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Skills Matrix</a></li>
-                    <li><a href="#experience" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Experience</a></li>
-                    <li><a href="#projects-portfolio" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Projects</a></li>
-                    <li><a href="#education" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Education</a></li>
-                    <li><a href="#leadership-positions" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Leadership</a></li>
-                    <li><a href="#certifications" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Certifications</a></li>
-                    <li><a href="#languages-communication" class="nav-link px-3 py-2 rounded-md text-sm md:text-base font-medium hover:opacity-75 transition-all">Languages</a></li>
-                </ul>
-                <div class="relative">
-                    <input type="text" id="search-box" placeholder="Search skills (e.g., Tableau, Python, Agile)" class="search-input pl-8 pr-2 py-1 rounded-md text-sm focus:ring-2 focus:outline-none" aria-label="Search skills and experience">
-                    <div class="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
-                        <svg class="w-4 h-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                    <div id="search-results" class="search-results absolute top-full left-0 right-0 mt-1 rounded-md shadow-lg hidden max-h-60 overflow-y-auto z-20"></div>
-                </div>
-            </div>
-        </nav>
-
-        <main id="main-content">
-            <!-- Executive Summary -->
-            <section id="executive-summary" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-6" style="color: var(--primary-text)">Executive Summary</h2>
-                <div class="max-w-4xl mx-auto card p-8">
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div class="text-center">
-                            <h4 class="font-semibold text-lg mb-2" style="color: var(--accent-color)">Value Proposition</h4>
-                            <p class="text-sm" style="color: var(--primary-text)">Proven track record of delivering measurable business impact through strategic operations management and data-driven decision making</p>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="font-semibold text-lg mb-2" style="color: var(--accent-color)">Problem Solving Focus</h4>
-                            <p class="text-sm" style="color: var(--primary-text)">Specializes in transforming operational challenges into growth opportunities through analytical rigor and process optimization</p>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="font-semibold text-lg mb-2" style="color: var(--accent-color)">Unique Selling Points</h4>
-                            <p class="text-sm" style="color: var(--primary-text)">MBA-qualified professional with hands-on technical expertise in analytics platforms and proven leadership in large-scale program management</p>
-                        </div>
-                    </div>
-                    <p class="text-lg leading-relaxed mb-6" style="color: var(--primary-text)">
-                        Results-oriented Program & Operations Management professional with an MBA and 5+ years of progressive experience driving business objectives through strategic planning, data analytics, and process optimization. Demonstrates proven capacity for leading cross-functional teams, managing enterprise-scale programs, and delivering data-centric solutions that generate material operational efficiency gains and significant cost reductions.
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="font-semibold mb-3" style="color: var(--accent-color)">Core Competencies:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge" data-keyword="strategic planning">Strategic Planning</span>
-                                <span class="skill-badge" data-keyword="data analytics">Data Analytics</span>
-                                <span class="skill-badge" data-keyword="process optimization">Process Optimization</span>
-                                <span class="skill-badge" data-keyword="team leadership">Team Leadership</span>
-                                <span class="skill-badge" data-keyword="tableau">Tableau</span>
-                                <span class="skill-badge" data-keyword="lean six sigma">Lean Six Sigma</span>
-                                <span class="skill-badge" data-keyword="operations management">Operations Management</span>
-                                <span class="skill-badge" data-keyword="kpi dashboards">KPI Dashboards</span>
-                                <span class="skill-badge" data-keyword="medical services">Healthcare Operations</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-3" style="color: var(--accent-color)">Technical Proficiencies:</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge" data-keyword="tableau">Tableau</span>
-                                <span class="skill-badge" data-keyword="excel">Excel</span>
-                                <span class="skill-badge" data-keyword="sap">SAP</span>
-                                <span class="skill-badge" data-keyword="time series analysis">Time Series Analysis</span>
-                                <span class="skill-badge" data-keyword="survey design">Survey Design</span>
-                                <span class="skill-badge" data-keyword="root cause analysis">Root Cause Analysis</span>
-                                <span class="skill-badge" data-keyword="route optimization">Route Optimization</span>
-                                <span class="skill-badge" data-keyword="fraud detection">Fraud Detection</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Enhanced Skills Matrix -->
-            <section id="skills-matrix" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-6" style="color: var(--primary-text)">Skills Assessment Matrix</h2>
-                <div class="max-w-6xl mx-auto">
-                    <p class="text-center mb-8" style="color: var(--secondary-text)">Detailed proficiency breakdown with years of experience and certification status. Click on skills to highlight related experiences.</p>
-                    <div class="skills-matrix">
-                        <!-- Strategy & Planning -->
-                        <div class="skill-category" data-skill="strategy">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Strategy & Planning</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Strategic Planning</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Go-to-Market Strategy</div>
-                                    <div class="skill-level">2+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Operations Strategy</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Data Analytics & BI -->
-                        <div class="skill-category" data-skill="data">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Data Analytics & BI</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Tableau <span class="text-xs bg-green-100 text-green-600 px-1 rounded">Certified</span></div>
-                                    <div class="skill-level">3+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Excel & Advanced Analytics</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Time Series Analysis</div>
-                                    <div class="skill-level">2+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Business Intelligence</div>
-                                    <div class="skill-level">3+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                        </div>
-
-                        <!-- Operations Management -->
-                        <div class="skill-category" data-skill="operations">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Operations Management</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Lean Six Sigma <span class="text-xs bg-green-100 text-green-600 px-1 rounded">Green Belt</span></div>
-                                    <div class="skill-level">4+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Process Optimization</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">SAP</div>
-                                    <div class="skill-level">2+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                        </div>
-
-                        <!-- Program & Project Management -->
-                        <div class="skill-category" data-skill="program">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Program & Project Management</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Large-Scale Program Management</div>
-                                    <div class="skill-level">3+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Survey Design & Implementation</div>
-                                    <div class="skill-level">4+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Cross-Functional Coordination</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                        </div>
-
-                        <!-- Leadership & Team Management -->
-                        <div class="skill-category" data-skill="leadership">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Leadership & Team Management</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Team Leadership</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Training & Development</div>
-                                    <div class="skill-level">3+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Stakeholder Management</div>
-                                    <div class="skill-level">5+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                        </div>
-
-                        <!-- Industry Knowledge -->
-                        <div class="skill-category">
-                            <h3 class="text-lg font-bold mb-4" style="color: var(--primary-text)">Industry Knowledge</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Market Research & Analysis</div>
-                                    <div class="skill-level">4+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Expert</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Manufacturing Operations</div>
-                                    <div class="skill-level">2+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <div class="font-medium">Healthcare Operations</div>
-                                    <div class="skill-level">1+ years experience</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                                <div class="proficiency-level">Advanced</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Professional Experience -->
-            <section id="experience" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Professional Experience</h2>
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-center mb-8" style="color: var(--secondary-text)">Interactive career timeline with quantified achievements and measurable impact. Click on each role to expand details.</p>
-                    <div class="relative border-l-2 pl-8 space-y-10 timeline-border">
-                        <!-- Program Manager -->
-                        <div id="exp1" class="timeline-item" data-skill="program">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Program Manager <span class="achievement-badge">Current</span></h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Dhruv Research | Remote</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">September 2024 - May 2025</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Program Management</span>
-                                            <span class="skill-badge">Survey Design</span>
-                                            <span class="skill-badge">Data Analysis</span>
-                                            <span class="skill-badge">Root Cause Analysis</span>
-                                            <span class="skill-badge">Process Optimization</span>
-                                            <span class="skill-badge">Predictive Analytics</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Challenge</div>
-                                            <div>Complex multi-state electoral prediction program</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Result</div>
-                                            <div><strong>77% prediction accuracy</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="program data">
-                                            <strong>Scale Achievement:</strong> Successfully administered large-scale program involving <strong>5.5 Lakhs+ survey samples</strong> across <strong>70 constituencies</strong>
-                                        </li>
-                                        <li data-skill="data">
-                                            <strong>Quality Improvement:</strong> Conducted rigorous root cause analyses that improved predictive model accuracy to <strong>77%</strong>
-                                        </li>
-                                        <li data-skill="operations program">
-                                            <strong>Process Innovation:</strong> Enhanced survey operations by eliminating questionnaire biases for improved sample quality
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-2 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Team Size Managed</span>
-                                            <strong>Cross-functional teams</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Geographic Coverage</span>
-                                            <strong>70 constituencies</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Operations Manager -->
-                        <div id="exp2" class="timeline-item" data-skill="strategy data operations leadership">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Associate Manager - Strategy, Operations, and Analytics</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Dhruv Research | Remote</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">June 2022 - August 2024</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Strategic Planning</span>
-                                            <span class="skill-badge">Tableau</span>
-                                            <span class="skill-badge">Team Leadership</span>
-                                            <span class="skill-badge">Algorithm Development</span>
-                                            <span class="skill-badge">Operations Analytics</span>
-                                            <span class="skill-badge">Cost Optimization</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Before</div>
-                                            <div>Manual processes, limited visibility</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">After</div>
-                                            <div><strong>₹8L cost savings, 40% visibility increase</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="leadership">
-                                            <strong>Division Establishment:</strong> Built analytics team from ground up, streamlining hiring process from resume screening to onboarding with HR
-                                        </li>
-                                        <li data-skill="data">
-                                            <strong>Dashboard Implementation:</strong> Created Tableau dashboards to monitor KPIs, boosting operations management visibility by <strong>40%</strong>
-                                        </li>
-                                        <li data-skill="operations">
-                                            <strong>Cost Optimization:</strong> Designed route optimization algorithm, saving <strong>Rs. 8 lakhs per round</strong> in transport costs
-                                        </li>
-                                        <li data-skill="data">
-                                            <strong>Fraud Prevention:</strong> Developed fraud detection algorithm using sampling time and distribution data
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-3 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Cost Savings</span>
-                                            <strong>₹8L per cycle</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Process Efficiency</span>
-                                            <strong>+25%</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Team Built</span>
-                                            <strong>Analytics Division</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Senior Associate -->
-                        <div id="exp3" class="timeline-item" data-skill="strategy operations leadership">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Senior Associate - Strategy and Operations</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Dhruv Research | Remote</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">October 2021 - June 2022</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Training & Development</span>
-                                            <span class="skill-badge">Operations Management</span>
-                                            <span class="skill-badge">Quality Assurance</span>
-                                            <span class="skill-badge">Team Coordination</span>
-                                            <span class="skill-badge">Process Design</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Challenge</div>
-                                            <div>Scale field operations nationwide</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Achievement</div>
-                                            <div><strong>600+ agents trained & deployed</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="leadership">
-                                            <strong>Talent Development:</strong> Designed comprehensive onboarding program, successfully hiring <strong>600+ field agents</strong> for Uttar Pradesh and Gujarat polls
-                                        </li>
-                                        <li data-skill="operations program">
-                                            <strong>Operational Excellence:</strong> Oversaw survey operations, ensuring high sample collection rates and maintaining quality standards
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-2 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Training Success</span>
-                                            <strong>600+ agents</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Geographic Coverage</span>
-                                            <strong>2 states</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Manager, Medical Services -->
-                        <div id="exp4" class="timeline-item" data-skill="medical operations leadership">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Manager, Medical Services</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Pristyncare | Gurgaon, Haryana</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">December 2020 - October 2021</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Medical Services</span>
-                                            <span class="skill-badge">Training & Development</span>
-                                            <span class="skill-badge">Time Series Analysis</span>
-                                            <span class="skill-badge">Resource Planning</span>
-                                            <span class="skill-badge">Operations Management</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Before</div>
-                                            <div>62% doctor satisfaction</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">After</div>
-                                            <div><strong>81% satisfaction (30% increase)</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="medical leadership">
-                                            <strong>Training Program Design:</strong> Designed week-long doctor onboarding and training program, collaborating with category, operations, and ground teams
-                                        </li>
-                                        <li data-skill="data medical">
-                                            <strong>Forecasting Model:</strong> Built city-wide surgery forecasting model using time series analysis for enhanced doctor availability and planning
-                                        </li>
-                                        <li data-skill="operations medical">
-                                            <strong>Process Improvement:</strong> Identified system inefficiencies and operational slacks, improving resource allocation and scheduling
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-2 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Satisfaction Increase</span>
-                                            <strong>30% improvement</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Service Quality</span>
-                                            <strong>Enhanced</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Maintenance Assistant -->
-                        <div id="exp5" class="timeline-item" data-skill="operations">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Maintenance Assistant</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Tata Steel Limited | Jamshedpur, Jharkhand</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">May 2016 - June 2018</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Operations Management</span>
-                                            <span class="skill-badge">Process Optimization</span>
-                                            <span class="skill-badge">SAP</span>
-                                            <span class="skill-badge">KPI Monitoring</span>
-                                            <span class="skill-badge">Root Cause Analysis</span>
-                                            <span class="skill-badge">Manufacturing</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Challenge</div>
-                                            <div>Ramp up new facility to full capacity</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Achievement</div>
-                                            <div><strong>Full capacity in 35 days</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="operations">
-                                            <strong>Facility Ramp-up:</strong> Successfully ramped up <strong>1.75 million tonnes per annum</strong> coke plant to full capacity in record <strong>35 days</strong>
-                                        </li>
-                                        <li data-skill="operations">
-                                            <strong>Cycle Time Optimization:</strong> Reduced machine cycle time by <strong>20 minutes</strong> through optimization of coal filling operations
-                                        </li>
-                                        <li data-skill="data">
-                                            <strong>Performance Analytics:</strong> Performed root cause analysis and tracked KPIs in SAP to maintain machinery efficiency at <strong>95%+</strong>
-                                        </li>
-                                        <li data-skill="operations">
-                                            <strong>Environmental Compliance:</strong> Commissioned dust collector system to promote eco-friendly work environment
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-2 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Production Capacity</span>
-                                            <strong>1.75M tonnes/year</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Efficiency Achievement</span>
-                                            <strong>95%+</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Strategy Intern -->
-                        <div id="exp-intern" class="timeline-item" data-skill="strategy">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Strategy Intern</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Luminous Power Technologies | Gurgaon, Haryana</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">April 2019 - May 2019</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Go-to-Market Strategy</span>
-                                            <span class="skill-badge">IoT Products</span>
-                                            <span class="skill-badge">Market Research</span>
-                                            <span class="skill-badge">Competitor Analysis</span>
-                                            <span class="skill-badge">Product Benchmarking</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="strategy">
-                                            <strong>Market Strategy:</strong> Developed comprehensive strategy for IoT-connected products, targeting specific market segments via primary research
-                                        </li>
-                                        <li data-skill="strategy">
-                                            <strong>Competitive Intelligence:</strong> Benchmarked IoT products against competitors and recommended operational improvements through secondary research
-                                        </li>
-                                        <li data-skill="strategy">
-                                            <strong>Strategic Presentation:</strong> Presented strategic recommendations to senior management for product development and market positioning
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Enhanced Projects Portfolio -->
-            <section id="projects-portfolio" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Key Projects Portfolio</h2>
-                <div class="max-w-6xl mx-auto">
-                    <p class="text-center mb-8" style="color: var(--secondary-text)">Detailed project showcase with problem-solution-result framework and measurable business impact</p>
-                    <div class="grid lg:grid-cols-2 gap-8">
-                        <!-- Project 1: HR Metrics Optimization -->
-                        <div class="card p-6 hover:shadow-lg transition-shadow" data-skill="leadership data">
-                            <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-text)">HR Metrics Optimization for Cost Reduction</h3>
-                            <p class="mb-4 text-sm" style="color: var(--secondary-text)">IIM Indore | Strategic Consulting Project</p>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Problem Statement</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Avtec Ltd. faced escalating manpower costs impacting profitability, with manpower cost-to-sales ratio at unsustainable 13.9%</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Solution Implemented</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Built comprehensive HR metrics dashboard for Avtec, implementing KPI frameworks and performance optimization strategies</p>
-                            </div>
-                            <div class="project-before-after mb-4">
-                                <div class="text-center">
-                                    <div class="text-sm font-medium" style="color: var(--secondary-text)">Before</div>
-                                    <div><strong>13.9%</strong> manpower cost ratio</div>
-                                </div>
-                                <div class="before-after-arrow">→</div>
-                                <div class="text-center">
-                                    <div class="text-sm font-medium" style="color: var(--secondary-text)">After</div>
-                                    <div><strong>11.2%</strong> manpower cost ratio</div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <div class="project-metric">
-                                    <span>Cost Reduction</span>
-                                    <strong>2.7% points</strong>
-                                </div>
-                                <div class="project-metric">
-                                    <span>Annual Impact</span>
-                                    <strong>Significant</strong>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge">HR Analytics</span>
-                                <span class="skill-badge">Cost Reduction</span>
-                                <span class="skill-badge">KPI Development</span>
-                                <span class="skill-badge">Performance Management</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 2: Pricing & Retail Strategy -->
-                        <div class="card p-6 hover:shadow-lg transition-shadow" data-skill="strategy">
-                            <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-text)">Pricing & Retail Strategy Analysis</h3>
-                            <p class="mb-4 text-sm" style="color: var(--secondary-text)">IIM Indore | Market Strategy Project</p>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Problem Statement</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Zomato Gold and Crossword Books facing customer acquisition and retention challenges in competitive market</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Solution Delivered</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Analyzed pricing and retail strategies for Zomato Gold and Crossword Books, proposing data-driven solutions</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Key Outcomes</h4>
-                                <ul class="text-sm space-y-1 list-disc list-inside" style="color: var(--primary-text)">
-                                    <li>Identified key market challenges impacting growth</li>
-                                    <li>Proposed actionable solutions for customer retention</li>
-                                    <li>Developed pricing optimization strategies</li>
-                                    <li>Created customer segmentation framework</li>
-                                </ul>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <div class="project-metric">
-                                    <span>Market Segments</span>
-                                    <strong>Multiple analyzed</strong>
-                                </div>
-                                <div class="project-metric">
-                                    <span>Strategies Proposed</span>
-                                    <strong>Comprehensive</strong>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge">Market Analysis</span>
-                                <span class="skill-badge">Pricing Strategy</span>
-                                <span class="skill-badge">Customer Retention</span>
-                                <span class="skill-badge">Competitive Intelligence</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 3: Route Optimization Algorithm -->
-                        <div class="card p-6 hover:shadow-lg transition-shadow" data-skill="data operations">
-                            <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-text)">Route Optimization Algorithm Development</h3>
-                            <p class="mb-4 text-sm" style="color: var(--secondary-text)">Dhruv Research | Operations Innovation Project</p>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Problem Statement</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">High transportation costs and inefficient routing impacting project economics across multiple field locations</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Technical Solution</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Designed route optimization algorithm integrating real-time data and multi-constraint optimization</p>
-                            </div>
-                            <div class="project-before-after mb-4">
-                                <div class="text-center">
-                                    <div class="text-sm font-medium" style="color: var(--secondary-text)">Before</div>
-                                    <div>Manual routing, high costs</div>
-                                </div>
-                                <div class="before-after-arrow">→</div>
-                                <div class="text-center">
-                                    <div class="text-sm font-medium" style="color: var(--secondary-text)">After</div>
-                                    <div><strong>₹8L savings per round</strong></div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <div class="project-metric">
-                                    <span>Cost Optimization</span>
-                                    <strong>₹8L saved</strong>
-                                </div>
-                                <div class="project-metric">
-                                    <span>Route Efficiency</span>
-                                    <strong>Significantly improved</strong>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge">Algorithm Development</span>
-                                <span class="skill-badge">Operations Research</span>
-                                <span class="skill-badge">Cost Optimization</span>
-                                <span class="skill-badge">Process Innovation</span>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: Fraud Detection System -->
-                        <div class="card p-6 hover:shadow-lg transition-shadow" data-skill="data">
-                            <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-text)">Fraud Detection Algorithm Implementation</h3>
-                            <p class="mb-4 text-sm" style="color: var(--secondary-text)">Dhruv Research | Data Quality Enhancement Project</p>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Problem Statement</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Data integrity issues and potential fraud in field-collected survey data affecting research quality</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Technical Implementation</h4>
-                                <p class="text-sm" style="color: var(--primary-text)">Developed fraud detection algorithm using sampling time and distribution data for quality assurance</p>
-                            </div>
-                            <div class="mb-4">
-                                <h4 class="font-semibold mb-2" style="color: var(--accent-color)">Impact Delivered</h4>
-                                <ul class="text-sm space-y-1 list-disc list-inside" style="color: var(--primary-text)">
-                                    <li>Significant reduction in data integrity issues</li>
-                                    <li>Real-time fraud detection capability</li>
-                                    <li>Automated quality scoring system</li>
-                                    <li>Improved research reliability</li>
-                                </ul>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <div class="project-metric">
-                                    <span>Data Quality</span>
-                                    <strong>Enhanced</strong>
-                                </div>
-                                <div class="project-metric">
-                                    <span>Detection Accuracy</span>
-                                    <strong>High</strong>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge">Algorithm Development</span>
-                                <span class="skill-badge">Fraud Detection</span>
-                                <span class="skill-badge">Data Quality</span>
-                                <span class="skill-badge">Statistical Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section id="education" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Education & Academic Excellence</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="card p-6">
-                        <div class="mb-6">
-                            <div class="flex items-start justify-between mb-2">
-                                <h4 class="text-lg font-semibold" style="color: var(--primary-text)">Master of Business Administration (MBA), General Management</h4>
-                                <span class="text-sm px-2 py-1 bg-yellow-100 text-yellow-700 rounded">Top 10%</span>
-                            </div>
-                            <p style="color: var(--secondary-text)">Indian Institute of Management, Indore, MP</p>
-                            <p class="text-sm mb-3" style="color: var(--secondary-text)">Conferred March 2020</p>
-                            <div class="grid md:grid-cols-2 gap-4 mb-4">
-                                <div>
-                                    <h5 class="font-semibold mb-2" style="color: var(--accent-color)">Academic Distinctions:</h5>
-                                    <ul class="list-disc list-inside text-sm space-y-1" style="color: var(--primary-text)">
-                                        <li><strong>Top 5%ile</strong> in Retail, Pricing, and Operations Management among 500+ students</li>
-                                        <li><strong>Specialized Coursework:</strong> Brand Management, Pricing, Operations, Marketing Research, Consumer Behavior</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h5 class="font-semibold mb-2" style="color: var(--accent-color)">Competition Achievements:</h5>
-                                    <ul class="list-disc list-inside text-sm space-y-1" style="color: var(--primary-text)">
-                                        <li><strong>Runners-up:</strong> Asian Paints Canvas Competition</li>
-                                        <li><strong>Runners-up:</strong> KPMG Lean Six Sigma Challenge</li>
-                                        <li><strong>Finalist:</strong> Mahindra War Room, Tata Motors Mind Rover</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="skill-badge">Strategic Management</span>
-                                <span class="skill-badge">Operations Management</span>
-                                <span class="skill-badge">Data Analytics</span>
-                                <span class="skill-badge">Marketing Strategy</span>
-                                <span class="skill-badge">Financial Analysis</span>
-                            </div>
-                        </div>
-                        <div class="border-t pt-6" style="border-color: var(--border-color);">
-                            <h4 class="text-lg font-semibold" style="color: var(--primary-text)">Bachelor of Arts (Honours), Economics</h4>
-                            <p style="color: var(--secondary-text)">Nalanda Open University, Patna, Bihar</p>
-                            <p class="text-sm mb-3" style="color: var(--secondary-text)">Conferred May 2016</p>
-                            <ul class="list-disc list-inside text-sm" style="color: var(--primary-text)">
-                                <li><strong>Academic Rank:</strong> 5th position out of 132 students</li>
-                                <li><strong>Specialization:</strong> Microeconomics, Macroeconomics, International Finance, Agricultural Economics, Indian Economy</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Leadership & Positions of Responsibility -->
-            <section id="leadership-positions" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Leadership & Positions of Responsibility</h2>
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-center mb-8" style="color: var(--secondary-text)">Leadership roles demonstrating strategic thinking, team management, and results-driven execution during MBA tenure</p>
-                    <div class="relative border-l-2 pl-8 space-y-8 timeline-border">
-                        
-                        <!-- Udaan Position -->
-                        <div id="lead1" class="timeline-item" data-skill="leadership strategy">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Senior Member, Participation Vertical - Udaan</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Annual Marathon, IIM Indore</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">August 2018 - March 2020</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Strategic Partnership</span>
-                                            <span class="skill-badge">Stakeholder Management</span>
-                                            <span class="skill-badge">Event Marketing</span>
-                                            <span class="skill-badge">Community Outreach</span>
-                                            <span class="skill-badge">Project Management</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Challenge</div>
-                                            <div>Scale participation for flagship running event</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Achievement</div>
-                                            <div><strong>8,000+ runners mobilized</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="leadership strategy">
-                                            <strong>Strategic Partnership Development:</strong> Orchestrated multi-stakeholder collaboration with <strong>15+ NGOs, corporations, and agencies</strong> to drive participant acquisition
-                                        </li>
-                                        <li data-skill="program leadership">
-                                            <strong>Scale Achievement:</strong> Successfully mobilized <strong>8,000+ runners</strong> through targeted outreach campaigns and partnership management
-                                        </li>
-                                        <li data-skill="leadership">
-                                            <strong>Community Impact:</strong> Enhanced brand visibility and community engagement through strategic participation initiatives
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-2 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Participants Mobilized</span>
-                                            <strong>8,000+ runners</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Partnerships Established</span>
-                                            <strong>15+ organizations</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Utsaha Position -->
-                        <div id="lead2" class="timeline-item" data-skill="leadership strategy operations">
-                            <div class="absolute w-4 h-4 rounded-full -left-[9px] mt-1.5 timeline-dot"></div>
-                            <div class="p-4 card cursor-pointer title-container">
-                                <div class="flex justify-between items-center">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-semibold" style="color: var(--primary-text)">Senior Member, Events & Sponsorship Vertical - Utsaha</h3>
-                                        <p class="text-md" style="color: var(--secondary-text)">Annual Marketing Fest, IIM Indore</p>
-                                        <p class="text-sm mb-3" style="color: var(--secondary-text)">August 2018 - March 2020</p>
-                                        <div class="flex flex-wrap gap-2 mb-2">
-                                            <span class="skill-badge">Revenue Generation</span>
-                                            <span class="skill-badge">Corporate Relations</span>
-                                            <span class="skill-badge">Event Management</span>
-                                            <span class="skill-badge">Sponsorship Management</span>
-                                            <span class="skill-badge">Team Leadership</span>
-                                        </div>
-                                    </div>
-                                    <svg class="w-6 h-6 transition-transform duration-300 ml-4" style="color: var(--secondary-text)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="details mt-4 space-y-4" style="color: var(--primary-text)">
-                                    <div class="project-before-after">
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Target</div>
-                                            <div>Secure sponsorship & manage large-scale event</div>
-                                        </div>
-                                        <div class="before-after-arrow">→</div>
-                                        <div class="text-center">
-                                            <div class="text-sm font-medium" style="color: var(--secondary-text)">Result</div>
-                                            <div><strong>₹2.5L revenue + 850+ participants</strong></div>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-2 list-disc list-inside">
-                                        <li data-skill="strategy">
-                                            <strong>Revenue Generation:</strong> Secured <strong>₹2.5 Lakhs in sponsorship revenue</strong> through strategic corporate partnership negotiations and proposal development
-                                        </li>
-                                        <li data-skill="operations leadership">
-                                            <strong>Event Management Excellence:</strong> Orchestrated seamless execution of Marketing Workshop with <strong>850+ participants</strong>, ensuring 98% satisfaction rate
-                                        </li>
-                                        <li data-skill="leadership">
-                                            <strong>Corporate Relations:</strong> Built and maintained relationships with 20+ corporate partners, establishing long-term collaboration frameworks
-                                        </li>
-                                        <li data-skill="operations leadership">
-                                            <strong>Operational Leadership:</strong> Led cross-functional team coordination ensuring zero critical incidents during high-stakes events
-                                        </li>
-                                    </ul>
-                                    <div class="grid grid-cols-3 gap-4 mt-4">
-                                        <div class="project-metric">
-                                            <span>Revenue Generated</span>
-                                            <strong>₹2.5 Lakhs</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Event Participants</span>
-                                            <strong>850+</strong>
-                                        </div>
-                                        <div class="project-metric">
-                                            <span>Corporate Partners</span>
-                                            <strong>20+</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Professional Certifications & Training -->
-            <section id="certifications" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Professional Certifications & Training</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Primary Certifications -->
-                        <div class="card p-6">
-                            <h3 class="text-lg font-semibold mb-4" style="color: var(--primary-text)">Industry Certifications</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between">
-                                                                        <span style="color: var(--primary-text)">Lean Six Sigma Green Belt</span>
-                                    <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">Certified</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span style="color: var(--primary-text)">Operations Management Fundamentals</span>
-                                    <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">Certified</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span style="color: var(--primary-text)">Fundamentals of Visualization with Tableau</span>
-                                    <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">Certified</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Additional Training -->
-                        <div class="card p-6">
-                            <h3 class="text-lg font-semibold mb-4" style="color: var(--primary-text)">Specialized Training Programs</h3>
-                            <div class="space-y-3">
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Outdoor Development Program - Tata Steel</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Team Leadership & Adventure Foundation</div>
-                                </div>
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Program Management - KPMG India</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Process Improvement & Program Optimization</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Languages & Communication -->
-            <section id="languages-communication" class="mb-16 scroll-mt-24 fade-in">
-                <h2 class="text-3xl font-bold text-center mb-8" style="color: var(--primary-text)">Languages & Communication</h2>
-                <div class="max-w-4xl mx-auto">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Language Proficiency -->
-                        <div class="card p-6">
-                            <h3 class="text-lg font-semibold mb-4" style="color: var(--primary-text)">Language Proficiency</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-medium" style="color: var(--primary-text)">English</span>
-                                        <span class="text-sm" style="color: var(--accent-color)">Full Professional - C2 Level</span>
-                                    </div>
-                                    <div class="text-sm mb-2" style="color: var(--secondary-text)">Business & Technical Communication</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-medium" style="color: var(--primary-text)">Hindi</span>
-                                        <span class="text-sm" style="color: var(--accent-color)">Native Speaker</span>
-                                    </div>
-                                    <div class="text-sm mb-2" style="color: var(--secondary-text)">Mother Tongue</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 100%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-medium" style="color: var(--primary-text)">Bhojpuri</span>
-                                        <span class="text-sm" style="color: var(--accent-color)">Native</span>
-                                    </div>
-                                    <div class="text-sm mb-2" style="color: var(--secondary-text)">Native Language</div>
-                                    <div class="proficiency-bar">
-                                        <div class="proficiency-fill" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Communication Experience -->
-                        <div class="card p-6">
-                            <h3 class="text-lg font-semibold mb-4" style="color: var(--primary-text)">Communication Experience</h3>
-                            <div class="space-y-3">
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Presentation Skills</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Delivered 25+ client presentations</div>
-                                </div>
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Technical Writing</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Created comprehensive project reports and documentation</div>
-                                </div>
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Cross-cultural Communication</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Managed diverse teams across different regions</div>
-                                </div>
-                                <div style="color: var(--primary-text)">
-                                    <div class="font-medium">Stakeholder Engagement</div>
-                                    <div class="text-sm" style="color: var(--secondary-text)">Regular interaction with C-level executives</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="text-center py-8 border-t" style="border-color: var(--border-color); color: var(--secondary-text)">
-            <p>&copy; 2024 Aman Raj. All rights reserved. | Last updated: August 2024</p>
-            <p class="text-sm mt-2">Ready to contribute to your team's success through strategic operations management and data-driven solutions</p>
-        </footer>
+  <section class="block" aria-labelledby="impact-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Results</span>
+        <h2 id="impact-h">What changed because of the work</h2>
+      </div>
+      <div class="impact">
+        <div><b>~30%</b><span>Lower cost per sample, from ₹400+ to ₹280+</span></div>
+        <div><b>15 → 3 days</b><span>Projected delay cut on a stalled statewide program</span></div>
+        <div><b>77%</b><span>Seats called correctly, vote share within 3%</span></div>
+        <div><b>₹1.2 Cr</b><span>Operations budget planned and controlled per cycle</span></div>
+        <div><b>0 → 10</b><span>Analytics team built, with 8 direct reports</span></div>
+        <div><b>1,000+</b><span>Field agents and supervisors trained and onboarded</span></div>
+      </div>
     </div>
+  </section>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
+  <section class="block" id="coverage" aria-labelledby="cov-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Coverage</span>
+        <h2 id="cov-h">Four state elections, on the ground</h2>
+        <p>Each tile is a state. Select a shaded one to see what we ran there.</p>
+      </div>
+      <div class="coverage">
+        <div>
+          <div class="map" id="map" role="group" aria-label="Tile map of Indian states"></div>
+          <div class="legend" aria-hidden="true">
+            <span>Fewer samples</span><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span>
+          </div>
+          <p class="mapcap">Tiles show rough position, not area.</p>
+        </div>
+        <div class="states" id="states"></div>
+      </div>
+    </div>
+  </section>
 
-        themeToggle.addEventListener('click', () => {
-            if (body.hasAttribute('data-theme')) {
-                body.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
+  <section class="block" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Selected work</span>
+        <h2 id="work-h">Four problems I was handed</h2>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <span class="tag">Gujarat 2022 · Program recovery</span>
+          <h3>A statewide survey with nothing done after 15 days</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Zero constituencies completed two weeks in, against a fixed election calendar.</dd></div>
+            <div><dt>What I did</dt><dd>Took operational control, retrained field teams, reset daily targets, and moved agent pay from a fixed daily allowance to a performance-linked structure.</dd></div>
+          </dl>
+          <div class="result">Delay cut from 15 days to 3</div>
+        </article>
+        <article class="case">
+          <span class="tag">Delhi 2025 · End-to-end delivery</span>
+          <h3>Owning a 70-constituency program from design to forecast</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Five survey rounds and a seat forecast, all tied to a non-negotiable polling date.</dd></div>
+            <div><dt>What I did</dt><dd>Set the sampling plan, ran a daily cadence across Operations, Data, Analytics, PM and Field, kept a live RAID log, and reported weekly to the CEO and COO.</dd></div>
+          </dl>
+          <div class="result">77% of seats called correctly</div>
+        </article>
+        <article class="case">
+          <span class="tag">Unit economics · Process</span>
+          <h3>Bringing down the cost of every sample</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Repeat collection and avoidable spend were pushing cost per sample past ₹400.</dd></div>
+            <div><dt>What I did</dt><dd>Raised first-pass quality with SOPs and spot audits, and built a respondent-level fraud check that removed suspect interviews before they reached the dataset.</dd></div>
+          </dl>
+          <div class="result">₹400+ → ₹280+ per sample</div>
+        </article>
+        <article class="case">
+          <span class="tag">Operations research · Cost</span>
+          <h3>Routing field teams with a model instead of guesswork</h3>
+          <dl>
+            <div><dt>Problem</dt><dd>Travel was booked ad hoc, and teams crossed the same ground twice.</dd></div>
+            <div><dt>What I did</dt><dd>Built a latitude-longitude route optimization model to plan team movement, and live Metabase dashboards to track coverage gaps.</dd></div>
+          </dl>
+          <div class="result">₹8 lakh saved on travel</div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-        }
+  <section class="block" id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Experience</span>
+        <h2 id="exp-h">Ten years, newest first</h2>
+      </div>
+      <div class="timeline">
+        <div class="job break">
+          <div class="when">May 2025 – Aug 2026</div>
+          <div>
+            <h3>UPSC Civil Services preparation</h3>
+            <div class="where">Full-time career break · Bokaro</div>
+            <ul>
+              <li>Cleared the Civil Services Preliminary Examination 2026 and wrote the Mains. Result awaited.</li>
+              <li>Structured study of Indian polity, governance, the economy, public policy and current affairs.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">Oct 2021 – May 2025</div>
+          <div>
+            <h3>Dhruv Research</h3>
+            <div class="where">Political research and consulting · Gurgaon · Reported to the CEO, COO and Director of Operations</div>
+            <div class="subrole">
+              <h4>Associate Manager, Program Delivery</h4>
+              <div class="when2">Sep 2024 – May 2025</div>
+              <ul>
+                <li>Owned the Delhi 2025 program end to end across all 70 constituencies and delivered ahead of the committed date.</li>
+                <li>Built the Analytics Division from zero to 10 analysts with 8 direct reports, including hiring, training, KPIs and appraisals.</li>
+                <li>Ran the executive review cycle: daily to senior management, weekly to leadership, with KPI dashboards and a live RAID log.</li>
+                <li>Planned and controlled a ₹1.2 crore per-cycle budget across workforce, travel and vendors.</li>
+              </ul>
+            </div>
+            <div class="subrole">
+              <h4>Senior Associate, Strategy and Operations</h4>
+              <div class="when2">Oct 2021 – Aug 2024</div>
+              <ul>
+                <li>Recovered the stalled Gujarat 2022 program, cutting a projected 15-day delay to 3.</li>
+                <li>Scaled the field force to 600+ agents and trained 1,000+ agents and supervisors across programs.</li>
+                <li>Reduced cost per sample by about 30% and travel spend by ₹8 lakh.</li>
+                <li>Managed manpower and call-center vendors against defined quality standards.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">Dec 2020 – Oct 2021</div>
+          <div>
+            <h3>Pristyn Care</h3>
+            <div class="where">Manager, Medical Services · Gurgaon</div>
+            <ul>
+              <li>Built a city-wise demand forecasting model that became the basis for capacity planning.</li>
+              <li>Onboarded 23 practitioners across Tier 2 and Tier 3 cities through a redesigned week-long training program.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">2018 – 2020</div>
+          <div>
+            <h3>MBA, IIM Indore</h3>
+            <div class="where">Post Graduate Programme in Management</div>
+            <ul>
+              <li>Top 5 percentile in Operations Management and Pricing among 500+ students.</li>
+              <li>Runners-up, KPMG Six Sigma Competition. Campus finalist, Mahindra War Room.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <div class="when">Jun 2016 – Jun 2018</div>
+          <div>
+            <h3>Tata Steel</h3>
+            <div class="where">Maintenance Assistant, Coke Plant Operations · Jamshedpur</div>
+            <ul>
+              <li>Part of the team that ramped a 1.75 MTPA coke plant to full operation in a record 35 days.</li>
+              <li>Cut machine cycle time by 20 minutes through re-sequencing, and led root cause analysis on repeat failures.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <section class="block" id="upsc" aria-labelledby="upsc-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The UPSC year</span>
+        <h2 id="upsc-h">Fifteen months studying how India is governed</h2>
+      </div>
+      <div class="upsc">
+        <div class="upsc-copy">
+          <p>In May 2025 I stepped away from work to prepare full time for the Civil Services Examination. I cleared Prelims 2026 and have written the Mains. I'm now open to roles while the result is pending.</p>
+          <ul class="gain">
+            <li><b>Policy and governance depth</b><span>Polity, federal structure, the economy and public policy, studied to exam depth. It sharpens how I read electoral data and government programs.</span></li>
+            <li><b>Writing under time pressure</b><span>Mains answer writing trains you to make a clear, structured argument in a few hundred words. That is most of executive reporting.</span></li>
+            <li><b>Discipline over a long horizon</b><span>A fixed exam calendar, a daily plan, and weekly self-review for over a year. The same habits I used on election timelines.</span></li>
+          </ul>
+        </div>
+        <ol class="steps" aria-label="UPSC CSE 2026 progress">
+          <li class="done"><span class="dot" aria-hidden="true">1</span><div><b>Preliminary Examination</b><small>CSE 2026</small></div><span class="pill">Cleared</span></li>
+          <li class="done"><span class="dot" aria-hidden="true">2</span><div><b>Main Examination</b><small>Written papers</small></div><span class="pill">Written</span></li>
+          <li class="now"><span class="dot" aria-hidden="true">3</span><div><b>Mains result</b><small>Declared by UPSC</small></div><span class="pill">Awaited</span></li>
+          <li class="later"><span class="dot" aria-hidden="true">4</span><div><b>Personality Test</b><small>If qualified</small></div><span class="pill">Next</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
 
-        // Timeline item expansion
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            const titleContainer = item.querySelector('.title-container');
-            titleContainer.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all other items
-                document.querySelectorAll('.timeline-item').forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                });
-                
-                // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
+  <section class="block" id="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Book a call</span>
+        <h2 id="book-h">Pick the conversation you need</h2>
+        <p>All calls are on Google Meet, in English or Hindi.</p>
+      </div>
+      <div class="sessions" id="sessions"></div>
+    </div>
+  </section>
 
-        // Search functionality
-        const searchBox = document.getElementById('search-box');
-        const searchResults = document.getElementById('search-results');
-        const skills = [
-            'tableau', 'excel', 'python', 'sql', 'strategic planning', 'data analytics',
-            'lean six sigma', 'program management', 'operations management', 'team leadership',
-            'process optimization', 'root cause analysis', 'kpi dashboards', 'survey design',
-            'cost optimization', 'predictive analytics', 'fraud detection', 'route optimization',
-            'medical services', 'manufacturing', 'healthcare operations', 'sap',
-            'strategic partnership', 'event management', 'revenue generation', 'corporate relations',
-            'sponsorship management', 'community outreach'
-        ];
+  <section class="block" aria-labelledby="skills-h">
+    <div class="wrap two">
+      <div>
+        <div class="head"><span class="eyebrow">Skills</span><h2 id="skills-h">How I work</h2></div>
+        <div class="skillgroup"><h3>Program delivery</h3><div class="roles"><span class="chip">Program governance</span><span class="chip">RAID and risk</span><span class="chip">Executive reporting</span><span class="chip">Recovery and turnaround</span><span class="chip">Stakeholder management</span></div></div>
+        <div class="skillgroup"><h3>Operations</h3><div class="roles"><span class="chip">Budget control</span><span class="chip">Workforce and capacity planning</span><span class="chip">Vendor management</span><span class="chip">Unit economics</span><span class="chip">SOP design</span></div></div>
+        <div class="skillgroup"><h3>Research and analytics</h3><div class="roles"><span class="chip">Sampling design</span><span class="chip">Seat and vote share forecasting</span><span class="chip">Fraud controls</span><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Metabase</span><span class="chip">Tableau</span><span class="chip">Apps Script</span><span class="chip">SPSS</span></div></div>
+        <div class="skillgroup"><h3>Languages</h3><div class="roles"><span class="chip">English</span><span class="chip">Hindi</span></div></div>
+      </div>
+      <div>
+        <div class="head"><span class="eyebrow">Education</span><h2>Degrees and certificates</h2></div>
+        <div class="edu">
+          <div><b>MBA (PGP), IIM Indore</b><span>2018 – 2020 · 72.14%</span></div>
+          <div><b>BA Economics (Honours), Nalanda Open University</b><span>2016 · Rank 5 of 132</span></div>
+          <div><b>Lean Six Sigma Green Belt</b><span>KPMG at IIM Indore</span></div>
+          <div><b>Operations Analytics</b><span>Wharton Online, University of Pennsylvania</span></div>
+          <div><b>Data Visualization with Tableau</b><span>UC Davis</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        let debounceTimer;
-        searchBox.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                if (query.length === 0) {
-                    searchResults.classList.add('hidden');
-                    clearHighlights();
-                    return;
-                }
+  <section class="block" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact">
+      <div>
+        <div class="head"><span class="eyebrow">Contact</span><h2 id="contact-h">Get in touch</h2><p>Based in Bokaro, Jharkhand. Open to relocation, remote work, and travel for constituency deployment.</p></div>
+        <div class="cards">
+          <div class="cline"><div><div class="k">Email</div><div class="v" id="email">p18amanr@gmail.com</div></div><button class="copy" type="button" data-copy="email">Copy</button></div>
+          <div class="cline"><div><div class="k">Phone / WhatsApp</div><div class="v" id="phone">+91 96619 07313</div></div><button class="copy" type="button" data-copy="phone">Copy</button></div>
+          <div class="cline"><div><div class="k">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/p18amanr" target="_blank" rel="noopener">linkedin.com/in/p18amanr</a></div><a class="copy" href="https://wa.me/919661907313" target="_blank" rel="noopener">WhatsApp</a></div>
+        </div>
+      </div>
+      <div id="resumes">
+        <div class="head"><span class="eyebrow">Resumes</span><h2>Pick the version for your role</h2></div>
+        <div class="resumes">
+          <a href="resume/Aman_Raj_Resume_Program_Management.pdf" target="_blank" rel="noopener">Program Management<span>PDF</span></a>
+          <a href="resume/Aman_Raj_Resume_Chief_of_Staff.pdf" target="_blank" rel="noopener">Chief of Staff<span>PDF</span></a>
+          <a href="resume/Aman_Raj_Resume_Business_Operations.pdf" target="_blank" rel="noopener">Business Operations<span>PDF</span></a>
+          <a href="resume/Aman_Raj_Resume_Political_Consulting.pdf" target="_blank" rel="noopener">Political Consulting<span>PDF</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-                const matches = skills.filter(skill => 
-                    skill.toLowerCase().includes(query)
-                ).slice(0, 5);
+<footer><div class="wrap"><span>© 2026 Aman Raj</span><span class="mono">Last updated October 2026</span></div></footer>
 
-                if (matches.length > 0) {
-                    searchResults.innerHTML = matches.map(skill => 
-                        `<div class="search-result-item px-3 py-2 cursor-pointer" data-skill="${skill}">${skill}</div>`
-                    ).join('');
-                    searchResults.classList.remove('hidden');
-                } else {
-                    searchResults.classList.add('hidden');
-                }
-            }, 300);
-        });
+<script>
+/* ===== EDIT HERE: paste your booking links when ready (Calendly, Cal.com, Topmate...). Leave "" to show the email fallback. ===== */
+var BOOKING = {
+  intro:   "",
+  consult: "",
+  mentor:  ""
+};
 
-        // Search result click handling
-        searchResults.addEventListener('click', function(e) {
-            if (e.target.classList.contains('search-result-item')) {
-                const skill = e.target.dataset.skill;
-                highlightSkill(skill);
-                searchResults.classList.add('hidden');
-                searchBox.value = '';
-            }
-        });
+var SESSIONS = [
+  {key:"intro", len:"20 min · Free", title:"Hiring conversation", who:"For recruiters and hiring managers", body:"A quick call about a role, my background, and whether it is a fit. Bring the job description."},
+  {key:"consult", len:"30 min", title:"Survey and field operations", who:"For campaigns, research agencies and NGOs", body:"Sampling plans, field team setup, quality and fraud controls, or rescuing a survey that is running late."},
+  {key:"mentor", len:"30 min", title:"UPSC and career guidance", who:"For aspirants and career switchers", body:"Planning a working professional's UPSC preparation, answer writing, or moving between civil services prep and a corporate career."}
+];
 
-        // Hide search results when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchBox.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.classList.add('hidden');
-            }
-        });
+var STATES = {
+  UP:{name:"Uttar Pradesh", yr:"2022 Assembly election", acs:"403", rounds:"4", samples:"20 lakh+", lvl:4, note:"Scaled the field force to 600+ agents and trained them on survey and sampling protocols."},
+  GJ:{name:"Gujarat", yr:"2022 Assembly election", acs:"182", rounds:"3", samples:"6.8 lakh+", lvl:3, note:"Took control of a stalled program and cut a projected 15-day delay to 3."},
+  DL:{name:"Delhi", yr:"2025 Assembly election", acs:"70", rounds:"5", samples:"4 lakh+", lvl:2, note:"Owned the program end to end. Called 77% of seats correctly, vote share within 3%.", extra:"Plus 9 rounds of statewide tracker surveys, 4,500+ samples each."},
+  BR:{name:"Bihar", yr:"2025 Assembly election", acs:"243", rounds:"1", samples:"3 lakh+", lvl:1, note:"Baseline survey across all 38 districts, delivered on a fixed end date."}
+};
 
-        function highlightSkill(skill) {
-            clearHighlights();
-            
-            // Find and highlight matching elements
-            const elements = document.querySelectorAll(`[data-skill*="${skill}"], .skill-badge[data-keyword="${skill}"]`);
-            elements.forEach(element => {
-                element.classList.add('highlight');
-                
-                // Scroll to first match
-                if (elements[0] === element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
+var TILES = [
+ ["JK",2,0,"Jammu and Kashmir"],["LA",3,0,"Ladakh"],
+ ["PB",1,1,"Punjab"],["HP",2,1,"Himachal Pradesh"],["UK",3,1,"Uttarakhand"],["SK",5,1,"Sikkim"],["AR",6,1,"Arunachal Pradesh"],
+ ["RJ",0,2,"Rajasthan"],["HR",1,2,"Haryana"],["DL",2,2,"Delhi"],["UP",3,2,"Uttar Pradesh"],["BR",4,2,"Bihar"],["AS",5,2,"Assam"],["NL",6,2,"Nagaland"],
+ ["GJ",0,3,"Gujarat"],["MP",1,3,"Madhya Pradesh"],["CG",2,3,"Chhattisgarh"],["JH",3,3,"Jharkhand"],["WB",4,3,"West Bengal"],["ML",5,3,"Meghalaya"],["MN",6,3,"Manipur"],
+ ["MH",1,4,"Maharashtra"],["TS",2,4,"Telangana"],["OD",3,4,"Odisha"],["TR",5,4,"Tripura"],["MZ",6,4,"Mizoram"],
+ ["GA",0,5,"Goa"],["KA",1,5,"Karnataka"],["AP",2,5,"Andhra Pradesh"],
+ ["KL",1,6,"Kerala"],["TN",2,6,"Tamil Nadu"]
+];
 
-            // Also highlight text content
-            highlightTextContent(skill);
-        }
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
-        function highlightTextContent(skill) {
-            const walker = document.createTreeWalker(
-                document.getElementById('main-content'),
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
-            );
+/* map + state cards */
+var map = document.getElementById("map"), statesEl = document.getElementById("states");
+TILES.forEach(function(t){
+  var code=t[0], s=STATES[code], el=document.createElement(s?"button":"div");
+  el.className="tile"+(s?" on l"+s.lvl:"");
+  el.style.gridColumn=(t[1]+1); el.style.gridRow=(t[2]+1);
+  el.textContent=code; el.title=t[3];
+  if(s){el.type="button";el.setAttribute("aria-label",t[3]+": "+s.samples+" samples");el.dataset.code=code;el.addEventListener("click",function(){select(code,true)})}
+  else{el.setAttribute("aria-hidden","true")}
+  map.appendChild(el);
+});
+["UP","GJ","DL","BR"].forEach(function(code){
+  var s=STATES[code];
+  var a=document.createElement("article");
+  a.className="state"; a.id="st-"+code; a.dataset.code=code;
+  a.innerHTML='<div class="top"><h3>'+esc(s.name)+'</h3><span class="yr">'+esc(s.yr)+'</span></div>'+
+    '<div class="nums"><div><b>'+s.acs+'</b><span>constituencies</span></div><div><b>'+s.rounds+'</b><span>survey round'+(s.rounds==="1"?"":"s")+'</span></div><div><b>'+esc(s.samples)+'</b><span>samples</span></div></div>'+
+    '<p>'+esc(s.note)+'</p>'+(s.extra?'<div class="extra">'+esc(s.extra)+'</div>':'');
+  a.addEventListener("mouseenter",function(){select(code,false)});
+  statesEl.appendChild(a);
+});
+function select(code,scroll){
+  document.querySelectorAll(".tile.on,.state").forEach(function(e){e.classList.toggle("sel",e.dataset.code===code)});
+  if(scroll && window.matchMedia("(max-width:860px)").matches){
+    var el=document.getElementById("st-"+code); if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+select("DL",false);
 
-            const textNodes = [];
-            let node;
-            while (node = walker.nextNode()) {
-                if (node.nodeValue.toLowerCase().includes(skill.toLowerCase())) {
-                    textNodes.push(node);
-                }
-            }
+/* booking cards */
+var sess=document.getElementById("sessions");
+SESSIONS.forEach(function(s){
+  var link=BOOKING[s.key];
+  var d=document.createElement("article"); d.className="session";
+  d.innerHTML='<span class="len">'+esc(s.len)+'</span><h3>'+esc(s.title)+'</h3><span class="who">'+esc(s.who)+'</span><p>'+esc(s.body)+'</p>'+
+    (link ? '<a class="btn primary" href="'+esc(link)+'" target="_blank" rel="noopener">Choose a time</a>'
+          : '<button class="btn ghost" type="button" data-copy="email">Copy email to schedule</button><span class="soon">Online booking opens soon</span>');
+  sess.appendChild(d);
+});
 
-            textNodes.forEach(textNode => {
-                const parent = textNode.parentNode;
-                if (parent.tagName !== 'SCRIPT' && parent.tagName !== 'STYLE') {
-                    const highlightedText = textNode.nodeValue.replace(
-                        new RegExp(`(${skill})`, 'gi'),
-                        '<mark>$1</mark>'
-                    );
-                    const wrapper = document.createElement('span');
-                    wrapper.innerHTML = highlightedText;
-                    parent.replaceChild(wrapper, textNode);
-                }
-            });
-        }
-
-        function clearHighlights() {
-            // Remove highlight class
-            document.querySelectorAll('.highlight').forEach(element => {
-                element.classList.remove('highlight');
-            });
-            
-            // Remove mark tags
-            document.querySelectorAll('mark').forEach(mark => {
-                mark.outerHTML = mark.innerHTML;
-            });
-        }
-
-        // Progress bar
-        const progressBar = document.getElementById('progressBar');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progressBar.style.width = scrollPercent + '%';
-        });
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                backToTop.classList.add('opacity-0', 'pointer-events-none');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Contact modal
-        const contactBtn = document.getElementById('contactBtn');
-        const contactModal = document.getElementById('contactModal');
-        const closeModal = document.getElementById('closeModal');
-
-        contactBtn.addEventListener('click', () => {
-            contactModal.classList.add('active');
-        });
-
-        closeModal.addEventListener('click', () => {
-            contactModal.classList.remove('active');
-        });
-
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-            }
-        });
-
-        // Contact form submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your interest! Your message has been received. I will get back to you shortly.');
-            contactModal.classList.remove('active');
-            contactForm.reset();
-        });
-
-        // Download buttons (placeholder functionality)
-        document.getElementById('download-pdf').addEventListener('click', () => {
-            alert('PDF download functionality would be implemented here.');
-        });
-
-        document.getElementById('download-word').addEventListener('click', () => {
-            alert('Word document download functionality would be implemented here.');
-        });
-
-        // Initialize animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                searchResults.classList.add('hidden');
-                contactModal.classList.remove('active');
-                clearHighlights();
-            }
-        });
-
-        // Print functionality
-        window.addEventListener('beforeprint', function() {
-            // Expand all timeline items for printing
-            document.querySelectorAll('.timeline-item').forEach(item => {
-                item.classList.add('active');
-            });
-        });
-
-        window.addEventListener('afterprint', function() {
-            // Collapse timeline items after printing
-            document.querySelectorAll('.timeline-item').forEach(item => {
-                item.classList.remove('active');
-            });
-        });
-
-        // Performance optimization: Lazy load non-critical elements
-        if ('IntersectionObserver' in window) {
-            const lazyElements = document.querySelectorAll('[data-src]');
-            const lazyLoadObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        element.src = element.dataset.src;
-                        element.removeAttribute('data-src');
-                        lazyLoadObserver.unobserve(element);
-                    }
-                });
-            });
-
-            lazyElements.forEach(element => {
-                lazyLoadObserver.observe(element);
-            });
-        }
-    </script>
+/* copy buttons */
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button[data-copy]"); if(!b) return;
+  var src=document.getElementById(b.dataset.copy); if(!src) return;
+  var text=src.textContent.trim(), label=b.textContent;
+  function done(msg){b.textContent=msg;setTimeout(function(){b.textContent=label},1600)}
+  function fallback(){try{var r=document.createRange();r.selectNodeContents(src);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);done("Selected")}catch(_){}}
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done("Copied")},fallback)}
+    else fallback();
+  }catch(_){fallback()}
+});
+</script>
 </body>
 </html>
