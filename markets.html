@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Markets · Aman Raj</title>
+<meta name="description" content="Weekly stock picks for Aman Raj's own portfolio, with chart screenshots and notes. Personal record only, not investment advice.">
+<meta property="og:title" content="Markets · Aman Raj">
+<meta property="og:description" content="Weekly stock picks for Aman Raj's own portfolio, with chart screenshots and notes. Personal record only, not investment advice.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#5A3E9E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='4' width='10' height='24' rx='5' fill='%235A3E9E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap bar-in">
+    <a class="brand" href="index.html"><span class="inkmark" aria-hidden="true"></span>Aman Raj</a>
+    <div class="nav-r">
+      <nav aria-label="Pages">
+        <ul id="navlinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="upsc.html">UPSC</a></li>
+          <li><a href="markets.html" aria-current="page">Markets</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a class="btn primary" href="book.html">Book a call</a>
+      <button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="pagehead dotted">
+  <div class="wrap">
+    <span class="eyebrow">Markets</span>
+    <h1>Weekly stock picks</h1>
+    <p class="lede">I'm a full-time investor and part-time trader in Indian equities. Every weekend I post a few stocks I've picked for my own portfolio, with chart screenshots and my notes on each.</p>
+  </div>
+</section>
+
+<section class="block" aria-label="Disclaimer and approach">
+  <div class="wrap">
+    <div class="notice" role="note">
+      <span class="ic" aria-hidden="true">!</span>
+      <div>
+        <b>Disclaimer: personal picks, not advice</b>
+        <p>I am not registered with SEBI as an Investment Adviser or a Research Analyst. The stocks on this page are picks for my own portfolio, shared as a personal record. Nothing here is investment advice or a recommendation to buy, sell or hold any security.</p>
+        <p>I may hold positions in the stocks mentioned and may exit them without updating this page. Investing in securities carries risk, including loss of capital. Do your own research, or consult a SEBI-registered adviser, before you invest.</p>
+      </div>
+    </div>
+    <div class="pledge" aria-label="How these picks are made">
+      <span>My own picks and notes</span>
+      <span>No AI used to select stocks or write notes</span>
+      <span>Notes published exactly as written</span>
+      <span>No return or performance claims</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="picks" aria-label="Weekly picks">
+  <div class="wrap">
+    <div class="weekbar" id="weekbar" aria-label="Choose a week"><span class="lbl">Week</span></div>
+    <div id="picks-root"></div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">How it works</span><h2 id="how-h">Every weekend, the same routine</h2></div>
+    <ol class="howto">
+      <li><b>I pick a few stocks</b><span>Through the week I shortlist stocks for my own portfolio.</span></li>
+      <li><b>I write a note on each</b><span>On Saturday or Sunday I save chart screenshots and a short note on why.</span></li>
+      <li><b>They go up here, unedited</b><span>Newest week first. Older weeks stay in the archive above.</span></li>
+    </ol>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="x" type="button">Close</button>
+  <img id="lightbox-img" alt="">
+</div>
+
+</main>
+
+<footer><div class="wrap">
+  <div>© 2026 Aman Raj · p18amanr@gmail.com</div>
+  <nav aria-label="Footer"><a href="index.html">Home</a> <a href="work.html">Work</a> <a href="experience.html">Experience</a> <a href="upsc.html">UPSC</a> <a href="markets.html">Markets</a> <a href="about.html">About</a> <a href="book.html">Book a call</a></nav>
+  <div class="upd">Last updated October 2026</div>
+</div></footer>
+<script src="picks/picks.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

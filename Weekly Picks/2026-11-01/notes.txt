@@ -1,0 +1,8 @@
+DATE: 2026-11-01
+SUMMARY: Write a short note for the whole week here (optional). Delete this line if not needed.
+
+### SYMBOL1 | NSE | Company Name
+Write your note on the first stock here.
+
+### SYMBOL2 | NSE | Company Name
+Write your note on the second stock here.

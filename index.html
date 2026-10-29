@@ -3,616 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aman Raj</title>
 <meta name="description" content="Aman Raj: program delivery and operations lead. Electoral research and field operations across 898 constituencies in UP, Gujarat, Delhi and Bihar. MBA, IIM Indore.">
 <meta property="og:title" content="Aman Raj">
-<meta property="og:description" content="Program delivery, strategy and field operations. 4 state elections, 898 constituencies, 34 lakh+ samples.">
+<meta property="og:description" content="Aman Raj: program delivery and operations lead. Electoral research and field operations across 898 constituencies in UP, Gujarat, Delhi and Bihar. MBA, IIM Indore.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#5A3E9E">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='11' y='4' width='10' height='24' rx='5' fill='%235A3E9E'/%3E%3C/svg%3E">
-<title>Aman Raj</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<style>
-/* Layout: one column field-report page; a sticky nav, a hero with a field ledger, then a tile map of India as the centerpiece. Accent is indelible-ink violet. */
-:root{
-  --bg:#F5F5F8;
-  --surface:#FFFFFF;
-  --fg:#18162A;
-  --muted:#626078;
-  --line:#DEDCE8;
-  --accent:#5A3E9E;
-  --accent-soft:#ECE7F7;
-  --tile:#E6E4EE;
-  --tile-fg:#8A879E;
-  --ink1:#C9BDEA; --ink2:#9B84D6; --ink3:#7357BC; --ink4:#4A2F8C;
-  --ink-fg:#FFFFFF;
-  --good:#2F7A55;
-  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --radius:10px;
-  --wrap:1080px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121019; --surface:#1B1826; --fg:#ECEAF4; --muted:#A3A0B8; --line:#2E2A3E;
-    --accent:#B39DF2; --accent-soft:#2A2340; --tile:#25212F; --tile-fg:#6F6B84;
-    --ink1:#4A3D73; --ink2:#6B54A8; --ink3:#8C70D6; --ink4:#B9A2F5; --ink-fg:#120F1C;
-    --good:#6FCB9C; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121019; --surface:#1B1826; --fg:#ECEAF4; --muted:#A3A0B8; --line:#2E2A3E;
-  --accent:#B39DF2; --accent-soft:#2A2340; --tile:#25212F; --tile-fg:#6F6B84;
-  --ink1:#4A3D73; --ink2:#6B54A8; --ink3:#8C70D6; --ink4:#B9A2F5; --ink-fg:#120F1C;
-  --good:#6FCB9C; color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
-p{margin:0}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-
-/* nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
-.brand{font-family:var(--f-display);font-weight:700;font-size:17px;color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:8px}
-.inkmark{display:inline-block;width:7px;height:18px;border-radius:5px 5px 2px 2px;background:var(--accent)}
-.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
-.nav ul a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 10px;border-radius:6px}
-.nav ul a:hover{color:var(--fg);background:var(--accent-soft)}
-@media (max-width:720px){.nav ul{display:none}}
-
-/* hero */
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;padding-block:64px 56px;align-items:start}
-.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--good);font-family:var(--f-mono);margin-bottom:20px}
-.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--good)}
-.hero h1{font-size:clamp(40px,6.4vw,68px);font-weight:800;letter-spacing:-.02em}
-.hero h1 .inkmark{width:12px;height:.7em;margin-right:14px;vertical-align:.02em}
-.hero .lede{font-size:clamp(19px,2.2vw,23px);font-family:var(--f-display);font-weight:500;margin-top:18px;max-width:30ch;line-height:1.3}
-.hero .sub{color:var(--muted);margin-top:16px;max-width:58ch}
-.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.chip{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--fg);background:var(--surface)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--f-body);padding:11px 18px;border-radius:8px;text-decoration:none;cursor:pointer;border:1px solid transparent}
-.btn.primary{background:var(--accent);color:var(--bg)}
-.btn.ghost{border-color:var(--line);color:var(--fg);background:var(--surface)}
-.btn:hover{filter:brightness(1.07)}
-
-.ledger{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 18px}
-.ledger h2{font-size:15px;font-family:var(--f-mono);font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.ledger dl{margin:14px 0 0;display:grid;gap:0}
-.ledger .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px dashed var(--line)}
-.ledger dt{color:var(--muted);font-size:14px}
-.ledger dd{margin:0;font-family:var(--f-display);font-weight:700;font-size:26px;font-variant-numeric:tabular-nums}
-.ledger .note{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--f-mono)}
-
-/* sections */
-section.block{padding-block:64px;border-top:1px solid var(--line)}
-.head{display:grid;gap:10px;margin-bottom:32px;max-width:64ch}
-.head h2{font-size:clamp(28px,3.6vw,38px);font-weight:700;letter-spacing:-.01em}
-.head p{color:var(--muted)}
-
-/* impact strip */
-.impact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-.impact div{padding:20px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.impact div:nth-child(3n){border-right:0}
-.impact div:nth-last-child(-n+3){border-bottom:0}
-.impact b{display:block;font-family:var(--f-display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent);line-height:1.1}
-.impact span{display:block;font-size:14px;color:var(--muted);margin-top:6px}
-@media (max-width:720px){
-  .impact{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .impact div{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
-  .impact div:nth-child(2n){border-right:0!important}
-  .impact div:nth-last-child(-n+2){border-bottom:0!important}
-}
-
-/* coverage */
-.coverage{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:40px;align-items:start}
-.map{display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,auto);gap:5px;width:100%;max-width:380px}
-.tile{aspect-ratio:1;max-width:100%;border-radius:6px;background:var(--tile);color:var(--tile-fg);font:500 11px var(--f-mono);display:flex;align-items:center;justify-content:center;border:0;padding:0;cursor:default}
-.tile.on{cursor:pointer;color:var(--ink-fg);font-weight:600;font-size:12px;transition:transform .15s}
-.tile.on:hover,.tile.on.sel{transform:scale(1.08);box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--fg)}
-.l1{background:var(--ink1)}.l2{background:var(--ink2)}.l3{background:var(--ink3)}.l4{background:var(--ink4)}
-.l1{color:var(--fg)!important}
-.legend{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:12px;color:var(--muted);font-family:var(--f-mono);flex-wrap:wrap}
-.legend i{display:inline-block;width:16px;height:12px;border-radius:3px}
-.mapcap{font-size:12px;color:var(--muted);margin-top:6px}
-.states{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.state{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;transition:border-color .15s,box-shadow .15s;min-width:0}
-.state.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.state .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.state h3{font-size:20px}
-.state .yr{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
-.state .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 12px}
-.state .nums b{display:block;font:700 20px var(--f-display);font-variant-numeric:tabular-nums}
-.state .nums span{font-size:12px;color:var(--muted);line-height:1.3;display:block}
-.state p{font-size:14px;color:var(--muted)}
-.state .extra{margin-top:10px;font-size:13px;padding:8px 10px;border-radius:6px;background:var(--accent-soft);color:var(--fg)}
-@media (max-width:860px){.coverage{grid-template-columns:minmax(0,1fr)}.map{margin:0 auto}}
-@media (max-width:560px){.states{grid-template-columns:minmax(0,1fr)}}
-
-/* case studies */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.case{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--surface);display:grid;gap:14px;align-content:start;min-width:0}
-.case .tag{font:500 12px var(--f-mono);color:var(--muted)}
-.case h3{font-size:21px}
-.case .result{font:700 26px var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
-.case dl{margin:0;display:grid;gap:10px}
-.case dt{font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.case dd{margin:2px 0 0;font-size:15px}
-@media (max-width:720px){.cases{grid-template-columns:minmax(0,1fr)}}
-
-/* timeline */
-.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
-.job{position:relative;padding:0 0 36px 28px;display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:24px}
-.job:last-child{padding-bottom:4px}
-.job::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.job.break::before{background:var(--accent)}
-.job .when{font:500 13px var(--f-mono);color:var(--muted);padding-top:3px}
-.job .where{font-size:14px;color:var(--muted)}
-.job h3{font-size:19px}
-.job ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
-.job li{font-size:15px}
-.job li::marker{color:var(--accent)}
-.subrole{margin-top:16px}
-.subrole h4{margin:0;font-size:15px;font-weight:600}
-.subrole .when2{font:500 12px var(--f-mono);color:var(--muted)}
-@media (max-width:720px){.job{grid-template-columns:minmax(0,1fr);gap:4px}}
-
-/* upsc */
-.upsc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.steps li{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
-.steps li:last-child{border-bottom:0}
-.dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 13px var(--f-mono);border:2px solid var(--line);color:var(--muted)}
-.done .dot{background:var(--accent);border-color:var(--accent);color:var(--bg)}
-.now .dot{border-color:var(--accent);color:var(--accent)}
-.steps b{display:block;font-weight:600}
-.steps small{color:var(--muted);font-size:13px}
-.pill{font:500 12px var(--f-mono);padding:3px 9px;border-radius:999px;white-space:nowrap}
-.done .pill{background:var(--accent-soft);color:var(--accent)}
-.now .pill{border:1px dashed var(--accent);color:var(--accent)}
-.later .pill{color:var(--muted);border:1px solid var(--line)}
-.upsc-copy{display:grid;gap:18px}
-.upsc-copy p{color:var(--fg)}
-.gain{display:grid;gap:12px;margin:0;padding:0;list-style:none}
-.gain li{padding-left:16px;border-left:3px solid var(--accent-soft)}
-.gain b{display:block}
-.gain span{color:var(--muted);font-size:15px}
-@media (max-width:860px){.upsc{grid-template-columns:minmax(0,1fr)}}
-
-/* booking */
-.sessions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.session{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:var(--surface);display:flex;flex-direction:column;gap:12px;min-width:0}
-.session .len{font:500 13px var(--f-mono);color:var(--accent)}
-.session h3{font-size:20px}
-.session p{color:var(--muted);font-size:15px;flex:1}
-.session .who{font-size:13px;color:var(--muted)}
-.session .btn{justify-content:center}
-.soon{font:500 12px var(--f-mono);color:var(--muted);text-align:center}
-@media (max-width:860px){.sessions{grid-template-columns:minmax(0,1fr)}}
-
-/* skills + edu */
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
-.skillgroup{margin-bottom:20px}
-.skillgroup h3{font:600 14px var(--f-body);margin-bottom:8px}
-.skillgroup .roles{margin-top:0}
-.edu{display:grid;gap:18px}
-.edu div b{display:block;font-weight:600}
-.edu div span{color:var(--muted);font-size:14px}
-@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
-
-/* contact */
-.contact{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:start}
-.cards{display:grid;gap:10px}
-.cline{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
-.cline .k{font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.cline .v{font-size:16px;word-break:break-word;user-select:all}
-.cline a.v{user-select:auto}
-.copy{font:500 13px var(--f-mono);padding:6px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;white-space:nowrap}
-.resumes{display:grid;gap:8px}
-.resumes a{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--fg);background:var(--surface)}
-.resumes a:hover{border-color:var(--accent)}
-.resumes a span{font:500 12px var(--f-mono);color:var(--muted)}
-
-footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:13px}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-
 <header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top"><span class="inkmark" aria-hidden="true"></span>Aman Raj</a>
-    <nav aria-label="Sections">
-      <ul>
-        <li><a href="#coverage">Coverage</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#upsc">UPSC</a></li>
-        <li><a href="#book">Book a call</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <div class="wrap bar-in">
+    <a class="brand" href="index.html"><span class="inkmark" aria-hidden="true"></span>Aman Raj</a>
+    <div class="nav-r">
+      <nav aria-label="Pages">
+        <ul id="navlinks">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="upsc.html">UPSC</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <a class="btn primary" href="book.html">Book a call</a>
+      <button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    </div>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <div class="status">Open to roles now · Remote or relocation</div>
-        <h1><span class="inkmark" aria-hidden="true"></span>Aman Raj</h1>
-        <p class="lede">I run large field programs that have to land on a fixed date.</p>
-        <p class="sub">Six years delivering electoral research and field operations across four states, reporting to the CEO and COO. I have owned programs from sampling design to the final leadership report, controlled a ₹1.2 crore budget per cycle, and led field teams of 600+. MBA from IIM Indore. I spent the last year preparing for the UPSC Civil Services and cleared Prelims 2026.</p>
-        <div class="roles" aria-label="Roles I'm open to">
-          <span class="chip">Program Management</span>
-          <span class="chip">Chief of Staff</span>
-          <span class="chip">Business Operations</span>
-          <span class="chip">Political Consulting</span>
-        </div>
-        <div class="cta">
-          <a class="btn primary" href="#book">Book a call</a>
-          <a class="btn ghost" href="#resumes">Download resume</a>
-        </div>
-      </div>
-      <aside class="ledger" aria-label="Field ledger">
-        <h2>Field ledger, 2022–2025</h2>
-        <dl>
-          <div class="row"><dt>States covered</dt><dd>4</dd></div>
-          <div class="row"><dt>Assembly constituencies</dt><dd>898</dd></div>
-          <div class="row"><dt>Samples collected</dt><dd>34 lakh+</dd></div>
-          <div class="row"><dt>Survey rounds</dt><dd>22</dd></div>
-        </dl>
-        <p class="note">13 constituency-level rounds + 9 statewide tracker rounds in Delhi</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="block" aria-labelledby="impact-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Results</span>
-        <h2 id="impact-h">What changed because of the work</h2>
-      </div>
-      <div class="impact">
-        <div><b>~30%</b><span>Lower cost per sample, from ₹400+ to ₹280+</span></div>
-        <div><b>15 → 3 days</b><span>Projected delay cut on a stalled statewide program</span></div>
-        <div><b>77%</b><span>Seats called correctly, vote share within 3%</span></div>
-        <div><b>₹1.2 Cr</b><span>Operations budget planned and controlled per cycle</span></div>
-        <div><b>0 → 10</b><span>Analytics team built, with 8 direct reports</span></div>
-        <div><b>1,000+</b><span>Field agents and supervisors trained and onboarded</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="coverage" aria-labelledby="cov-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Coverage</span>
-        <h2 id="cov-h">Four state elections, on the ground</h2>
-        <p>Each tile is a state. Select a shaded one to see what we ran there.</p>
-      </div>
-      <div class="coverage">
+<section class="hero dotted">
+  <div class="wrap">
+    <div>
+      <div class="who">
+        <!-- To add your photo: put aman.jpg in the assets folder and uncomment the img below -->
+        <div class="avatar" aria-hidden="true">AR<!-- <img src="assets/aman.jpg" alt=""> --></div>
         <div>
-          <div class="map" id="map" role="group" aria-label="Tile map of Indian states"></div>
-          <div class="legend" aria-hidden="true">
-            <span>Fewer samples</span><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span>
-          </div>
-          <p class="mapcap">Tiles show rough position, not area.</p>
+          <div class="status"><span class="pulse" aria-hidden="true"></span>Open to roles now</div>
+          <div class="loc">Bokaro, Jharkhand · Remote or relocation</div>
         </div>
-        <div class="states" id="states"></div>
+      </div>
+      <h1>Aman Raj<span class="accent">.</span></h1>
+      <p class="lede">I run large field programs that have to land on a fixed date.</p>
+      <p class="sub">Six years delivering electoral research and field operations across four states, reporting to the CEO and COO. I have owned programs from sampling design to the final leadership report, controlled a ₹1.2 crore budget per cycle, and led field teams of 600+. MBA, IIM Indore. Cleared UPSC Prelims 2026.</p>
+      <div class="roles" aria-label="Roles I'm open to">
+        <span class="chip">Program Management</span>
+        <span class="chip">Chief of Staff</span>
+        <span class="chip">Business Operations</span>
+        <span class="chip">Political Consulting</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="book.html">Book a call <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="about.html#resumes">Download resume</a>
       </div>
     </div>
-  </section>
+    <aside class="ledger" aria-label="Field ledger">
+      <h2>Field ledger · 2022–2025</h2>
+      <dl>
+        <div class="row"><dt>States</dt><dd>4</dd></div>
+        <div class="row"><dt>Constituencies</dt><dd>898</dd></div>
+        <div class="row"><dt>Samples</dt><dd>34L+</dd></div>
+        <div class="row"><dt>Survey rounds</dt><dd>22</dd></div>
+      </dl>
+      <div class="stack">
+        <div class="lab"><span>Samples by state</span><span>lakh</span></div>
+        <div class="sbar" role="img" aria-label="Samples by state: Uttar Pradesh 20 lakh, Gujarat 6.8 lakh, Delhi 4.4 lakh, Bihar 3 lakh">
+          <span class="s1" style="width:58.5%"></span><span class="s2" style="width:19.9%"></span><span class="s3" style="width:12.8%"></span><span class="s4" style="width:8.8%"></span>
+        </div>
+        <div class="keys"><span><i class="s1"></i>UP 20</span><span><i class="s2"></i>GJ 6.8</span><span><i class="s3"></i>DL 4.4</span><span><i class="s4"></i>BR 3</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
 
-  <section class="block" id="work" aria-labelledby="work-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Selected work</span>
-        <h2 id="work-h">Four problems I was handed</h2>
-      </div>
-      <div class="cases">
-        <article class="case">
-          <span class="tag">Gujarat 2022 · Program recovery</span>
-          <h3>A statewide survey with nothing done after 15 days</h3>
-          <dl>
-            <div><dt>Problem</dt><dd>Zero constituencies completed two weeks in, against a fixed election calendar.</dd></div>
-            <div><dt>What I did</dt><dd>Took operational control, retrained field teams, reset daily targets, and moved agent pay from a fixed daily allowance to a performance-linked structure.</dd></div>
-          </dl>
-          <div class="result">Delay cut from 15 days to 3</div>
-        </article>
-        <article class="case">
-          <span class="tag">Delhi 2025 · End-to-end delivery</span>
-          <h3>Owning a 70-constituency program from design to forecast</h3>
-          <dl>
-            <div><dt>Problem</dt><dd>Five survey rounds and a seat forecast, all tied to a non-negotiable polling date.</dd></div>
-            <div><dt>What I did</dt><dd>Set the sampling plan, ran a daily cadence across Operations, Data, Analytics, PM and Field, kept a live RAID log, and reported weekly to the CEO and COO.</dd></div>
-          </dl>
-          <div class="result">77% of seats called correctly</div>
-        </article>
-        <article class="case">
-          <span class="tag">Unit economics · Process</span>
-          <h3>Bringing down the cost of every sample</h3>
-          <dl>
-            <div><dt>Problem</dt><dd>Repeat collection and avoidable spend were pushing cost per sample past ₹400.</dd></div>
-            <div><dt>What I did</dt><dd>Raised first-pass quality with SOPs and spot audits, and built a respondent-level fraud check that removed suspect interviews before they reached the dataset.</dd></div>
-          </dl>
-          <div class="result">₹400+ → ₹280+ per sample</div>
-        </article>
-        <article class="case">
-          <span class="tag">Operations research · Cost</span>
-          <h3>Routing field teams with a model instead of guesswork</h3>
-          <dl>
-            <div><dt>Problem</dt><dd>Travel was booked ad hoc, and teams crossed the same ground twice.</dd></div>
-            <div><dt>What I did</dt><dd>Built a latitude-longitude route optimization model to plan team movement, and live Metabase dashboards to track coverage gaps.</dd></div>
-          </dl>
-          <div class="result">₹8 lakh saved on travel</div>
-        </article>
-      </div>
+<section class="block" aria-labelledby="impact-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Results</span>
+      <h2 id="impact-h">What changed because of the work</h2>
     </div>
-  </section>
+    <div class="impact">
+      <div class="lift"><b>~30%</b><span>Lower cost per sample, from ₹400+ to ₹280+</span></div>
+      <div class="lift"><b>15 → 3</b><span>Days of projected delay, cut on a stalled statewide program</span></div>
+      <div class="lift"><b>77%</b><span>Seats called correctly, vote share within 3%</span></div>
+      <div class="lift"><b>₹1.2 Cr</b><span>Operations budget planned and controlled per cycle</span></div>
+      <div class="lift"><b>0 → 10</b><span>Analytics team built, with 8 direct reports</span></div>
+      <div class="lift"><b>1,000+</b><span>Field agents and supervisors trained and onboarded</span></div>
+    </div>
+  </div>
+</section>
 
-  <section class="block" id="experience" aria-labelledby="exp-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Experience</span>
-        <h2 id="exp-h">Ten years, newest first</h2>
-      </div>
-      <div class="timeline">
-        <div class="job break">
-          <div class="when">May 2025 – Aug 2026</div>
-          <div>
-            <h3>UPSC Civil Services preparation</h3>
-            <div class="where">Full-time career break · Bokaro</div>
-            <ul>
-              <li>Cleared the Civil Services Preliminary Examination 2026 and wrote the Mains. Result awaited.</li>
-              <li>Structured study of Indian polity, governance, the economy, public policy and current affairs.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <div class="when">Oct 2021 – May 2025</div>
-          <div>
-            <h3>Dhruv Research</h3>
-            <div class="where">Political research and consulting · Gurgaon · Reported to the CEO, COO and Director of Operations</div>
-            <div class="subrole">
-              <h4>Associate Manager, Program Delivery</h4>
-              <div class="when2">Sep 2024 – May 2025</div>
-              <ul>
-                <li>Owned the Delhi 2025 program end to end across all 70 constituencies and delivered ahead of the committed date.</li>
-                <li>Built the Analytics Division from zero to 10 analysts with 8 direct reports, including hiring, training, KPIs and appraisals.</li>
-                <li>Ran the executive review cycle: daily to senior management, weekly to leadership, with KPI dashboards and a live RAID log.</li>
-                <li>Planned and controlled a ₹1.2 crore per-cycle budget across workforce, travel and vendors.</li>
-              </ul>
-            </div>
-            <div class="subrole">
-              <h4>Senior Associate, Strategy and Operations</h4>
-              <div class="when2">Oct 2021 – Aug 2024</div>
-              <ul>
-                <li>Recovered the stalled Gujarat 2022 program, cutting a projected 15-day delay to 3.</li>
-                <li>Scaled the field force to 600+ agents and trained 1,000+ agents and supervisors across programs.</li>
-                <li>Reduced cost per sample by about 30% and travel spend by ₹8 lakh.</li>
-                <li>Managed manpower and call-center vendors against defined quality standards.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="job">
-          <div class="when">Dec 2020 – Oct 2021</div>
-          <div>
-            <h3>Pristyn Care</h3>
-            <div class="where">Manager, Medical Services · Gurgaon</div>
-            <ul>
-              <li>Built a city-wise demand forecasting model that became the basis for capacity planning.</li>
-              <li>Onboarded 23 practitioners across Tier 2 and Tier 3 cities through a redesigned week-long training program.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <div class="when">2018 – 2020</div>
-          <div>
-            <h3>MBA, IIM Indore</h3>
-            <div class="where">Post Graduate Programme in Management</div>
-            <ul>
-              <li>Top 5 percentile in Operations Management and Pricing among 500+ students.</li>
-              <li>Runners-up, KPMG Six Sigma Competition. Campus finalist, Mahindra War Room.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="job">
-          <div class="when">Jun 2016 – Jun 2018</div>
-          <div>
-            <h3>Tata Steel</h3>
-            <div class="where">Maintenance Assistant, Coke Plant Operations · Jamshedpur</div>
-            <ul>
-              <li>Part of the team that ramped a 1.75 MTPA coke plant to full operation in a record 35 days.</li>
-              <li>Cut machine cycle time by 20 minutes through re-sequencing, and led root cause analysis on repeat failures.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<section class="block" aria-labelledby="explore-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Explore</span>
+      <h2 id="explore-h">More about me</h2>
     </div>
-  </section>
+    <div class="explore">
+      <a class="lift" href="work.html"><span class="k">Work</span><h3>Four state elections</h3><p>The India coverage map and four case studies, each with the numbers behind it.</p><span class="go">See the work →</span></a>
+      <a class="lift" href="experience.html"><span class="k">Experience</span><h3>Ten-year timeline</h3><p>Tata Steel, IIM Indore, Pristyn Care and Dhruv Research, plus skills and certificates.</p><span class="go">View timeline →</span></a>
+      <a class="lift" href="upsc.html"><span class="k">UPSC</span><h3>Prelims cleared, Mains written</h3><p>Fifteen months of study on how India is governed, and what it added to my work.</p><span class="go">Read more →</span></a>
+      <a class="lift" href="markets.html"><span class="k">Markets</span><h3>Weekly stock picks</h3><p>Stocks I pick for my own portfolio, posted every weekend with charts and notes.</p><span class="go">See this week →</span></a>
+      <a class="lift" href="book.html"><span class="k">Book a call</span><h3>Three ways to talk</h3><p>Hiring conversations, survey and field operations advice, and UPSC guidance.</p><span class="go">Pick a session →</span></a>
+      <a class="lift" href="about.html"><span class="k">About</span><h3>Personal details</h3><p>Background, languages, contact details and all four resume versions.</p><span class="go">Get in touch →</span></a>
+    </div>
+  </div>
+</section>
 
-  <section class="block" id="upsc" aria-labelledby="upsc-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">The UPSC year</span>
-        <h2 id="upsc-h">Fifteen months studying how India is governed</h2>
-      </div>
-      <div class="upsc">
-        <div class="upsc-copy">
-          <p>In May 2025 I stepped away from work to prepare full time for the Civil Services Examination. I cleared Prelims 2026 and have written the Mains. I'm now open to roles while the result is pending.</p>
-          <ul class="gain">
-            <li><b>Policy and governance depth</b><span>Polity, federal structure, the economy and public policy, studied to exam depth. It sharpens how I read electoral data and government programs.</span></li>
-            <li><b>Writing under time pressure</b><span>Mains answer writing trains you to make a clear, structured argument in a few hundred words. That is most of executive reporting.</span></li>
-            <li><b>Discipline over a long horizon</b><span>A fixed exam calendar, a daily plan, and weekly self-review for over a year. The same habits I used on election timelines.</span></li>
-          </ul>
-        </div>
-        <ol class="steps" aria-label="UPSC CSE 2026 progress">
-          <li class="done"><span class="dot" aria-hidden="true">1</span><div><b>Preliminary Examination</b><small>CSE 2026</small></div><span class="pill">Cleared</span></li>
-          <li class="done"><span class="dot" aria-hidden="true">2</span><div><b>Main Examination</b><small>Written papers</small></div><span class="pill">Written</span></li>
-          <li class="now"><span class="dot" aria-hidden="true">3</span><div><b>Mains result</b><small>Declared by UPSC</small></div><span class="pill">Awaited</span></li>
-          <li class="later"><span class="dot" aria-hidden="true">4</span><div><b>Personality Test</b><small>If qualified</small></div><span class="pill">Next</span></li>
-        </ol>
-      </div>
+<section class="ctaband" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div>
+      <h2 id="cta-h">Running a program that can't slip?</h2>
+      <p>I'm available now for program, operations and chief of staff roles.</p>
     </div>
-  </section>
+    <div class="cta">
+      <a class="btn inv" href="book.html">Book a call <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn out" href="about.html#contact">Contact details</a>
+    </div>
+  </div>
+</section>
 
-  <section class="block" id="book" aria-labelledby="book-h">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Book a call</span>
-        <h2 id="book-h">Pick the conversation you need</h2>
-        <p>All calls are on Google Meet, in English or Hindi.</p>
-      </div>
-      <div class="sessions" id="sessions"></div>
-    </div>
-  </section>
-
-  <section class="block" aria-labelledby="skills-h">
-    <div class="wrap two">
-      <div>
-        <div class="head"><span class="eyebrow">Skills</span><h2 id="skills-h">How I work</h2></div>
-        <div class="skillgroup"><h3>Program delivery</h3><div class="roles"><span class="chip">Program governance</span><span class="chip">RAID and risk</span><span class="chip">Executive reporting</span><span class="chip">Recovery and turnaround</span><span class="chip">Stakeholder management</span></div></div>
-        <div class="skillgroup"><h3>Operations</h3><div class="roles"><span class="chip">Budget control</span><span class="chip">Workforce and capacity planning</span><span class="chip">Vendor management</span><span class="chip">Unit economics</span><span class="chip">SOP design</span></div></div>
-        <div class="skillgroup"><h3>Research and analytics</h3><div class="roles"><span class="chip">Sampling design</span><span class="chip">Seat and vote share forecasting</span><span class="chip">Fraud controls</span><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Metabase</span><span class="chip">Tableau</span><span class="chip">Apps Script</span><span class="chip">SPSS</span></div></div>
-        <div class="skillgroup"><h3>Languages</h3><div class="roles"><span class="chip">English</span><span class="chip">Hindi</span></div></div>
-      </div>
-      <div>
-        <div class="head"><span class="eyebrow">Education</span><h2>Degrees and certificates</h2></div>
-        <div class="edu">
-          <div><b>MBA (PGP), IIM Indore</b><span>2018 – 2020 · 72.14%</span></div>
-          <div><b>BA Economics (Honours), Nalanda Open University</b><span>2016 · Rank 5 of 132</span></div>
-          <div><b>Lean Six Sigma Green Belt</b><span>KPMG at IIM Indore</span></div>
-          <div><b>Operations Analytics</b><span>Wharton Online, University of Pennsylvania</span></div>
-          <div><b>Data Visualization with Tableau</b><span>UC Davis</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="contact" aria-labelledby="contact-h">
-    <div class="wrap contact">
-      <div>
-        <div class="head"><span class="eyebrow">Contact</span><h2 id="contact-h">Get in touch</h2><p>Based in Bokaro, Jharkhand. Open to relocation, remote work, and travel for constituency deployment.</p></div>
-        <div class="cards">
-          <div class="cline"><div><div class="k">Email</div><div class="v" id="email">p18amanr@gmail.com</div></div><button class="copy" type="button" data-copy="email">Copy</button></div>
-          <div class="cline"><div><div class="k">Phone / WhatsApp</div><div class="v" id="phone">+91 96619 07313</div></div><button class="copy" type="button" data-copy="phone">Copy</button></div>
-          <div class="cline"><div><div class="k">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/p18amanr" target="_blank" rel="noopener">linkedin.com/in/p18amanr</a></div><a class="copy" href="https://wa.me/919661907313" target="_blank" rel="noopener">WhatsApp</a></div>
-        </div>
-      </div>
-      <div id="resumes">
-        <div class="head"><span class="eyebrow">Resumes</span><h2>Pick the version for your role</h2></div>
-        <div class="resumes">
-          <a href="resume/Aman_Raj_Resume_Program_Management.pdf" target="_blank" rel="noopener">Program Management<span>PDF</span></a>
-          <a href="resume/Aman_Raj_Resume_Chief_of_Staff.pdf" target="_blank" rel="noopener">Chief of Staff<span>PDF</span></a>
-          <a href="resume/Aman_Raj_Resume_Business_Operations.pdf" target="_blank" rel="noopener">Business Operations<span>PDF</span></a>
-          <a href="resume/Aman_Raj_Resume_Political_Consulting.pdf" target="_blank" rel="noopener">Political Consulting<span>PDF</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Aman Raj</span><span class="mono">Last updated October 2026</span></div></footer>
+<footer><div class="wrap">
+  <div>© 2026 Aman Raj · p18amanr@gmail.com</div>
+  <nav aria-label="Footer"><a href="index.html">Home</a> <a href="work.html">Work</a> <a href="experience.html">Experience</a> <a href="upsc.html">UPSC</a> <a href="markets.html">Markets</a> <a href="about.html">About</a> <a href="book.html">Book a call</a></nav>
+  <div class="upd">Last updated October 2026</div>
+</div></footer>
 
-<script>
-/* ===== EDIT HERE: paste your booking links when ready (Calendly, Cal.com, Topmate...). Leave "" to show the email fallback. ===== */
-var BOOKING = {
-  intro:   "",
-  consult: "",
-  mentor:  ""
-};
-
-var SESSIONS = [
-  {key:"intro", len:"20 min · Free", title:"Hiring conversation", who:"For recruiters and hiring managers", body:"A quick call about a role, my background, and whether it is a fit. Bring the job description."},
-  {key:"consult", len:"30 min", title:"Survey and field operations", who:"For campaigns, research agencies and NGOs", body:"Sampling plans, field team setup, quality and fraud controls, or rescuing a survey that is running late."},
-  {key:"mentor", len:"30 min", title:"UPSC and career guidance", who:"For aspirants and career switchers", body:"Planning a working professional's UPSC preparation, answer writing, or moving between civil services prep and a corporate career."}
-];
-
-var STATES = {
-  UP:{name:"Uttar Pradesh", yr:"2022 Assembly election", acs:"403", rounds:"4", samples:"20 lakh+", lvl:4, note:"Scaled the field force to 600+ agents and trained them on survey and sampling protocols."},
-  GJ:{name:"Gujarat", yr:"2022 Assembly election", acs:"182", rounds:"3", samples:"6.8 lakh+", lvl:3, note:"Took control of a stalled program and cut a projected 15-day delay to 3."},
-  DL:{name:"Delhi", yr:"2025 Assembly election", acs:"70", rounds:"5", samples:"4 lakh+", lvl:2, note:"Owned the program end to end. Called 77% of seats correctly, vote share within 3%.", extra:"Plus 9 rounds of statewide tracker surveys, 4,500+ samples each."},
-  BR:{name:"Bihar", yr:"2025 Assembly election", acs:"243", rounds:"1", samples:"3 lakh+", lvl:1, note:"Baseline survey across all 38 districts, delivered on a fixed end date."}
-};
-
-var TILES = [
- ["JK",2,0,"Jammu and Kashmir"],["LA",3,0,"Ladakh"],
- ["PB",1,1,"Punjab"],["HP",2,1,"Himachal Pradesh"],["UK",3,1,"Uttarakhand"],["SK",5,1,"Sikkim"],["AR",6,1,"Arunachal Pradesh"],
- ["RJ",0,2,"Rajasthan"],["HR",1,2,"Haryana"],["DL",2,2,"Delhi"],["UP",3,2,"Uttar Pradesh"],["BR",4,2,"Bihar"],["AS",5,2,"Assam"],["NL",6,2,"Nagaland"],
- ["GJ",0,3,"Gujarat"],["MP",1,3,"Madhya Pradesh"],["CG",2,3,"Chhattisgarh"],["JH",3,3,"Jharkhand"],["WB",4,3,"West Bengal"],["ML",5,3,"Meghalaya"],["MN",6,3,"Manipur"],
- ["MH",1,4,"Maharashtra"],["TS",2,4,"Telangana"],["OD",3,4,"Odisha"],["TR",5,4,"Tripura"],["MZ",6,4,"Mizoram"],
- ["GA",0,5,"Goa"],["KA",1,5,"Karnataka"],["AP",2,5,"Andhra Pradesh"],
- ["KL",1,6,"Kerala"],["TN",2,6,"Tamil Nadu"]
-];
-
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-
-/* map + state cards */
-var map = document.getElementById("map"), statesEl = document.getElementById("states");
-TILES.forEach(function(t){
-  var code=t[0], s=STATES[code], el=document.createElement(s?"button":"div");
-  el.className="tile"+(s?" on l"+s.lvl:"");
-  el.style.gridColumn=(t[1]+1); el.style.gridRow=(t[2]+1);
-  el.textContent=code; el.title=t[3];
-  if(s){el.type="button";el.setAttribute("aria-label",t[3]+": "+s.samples+" samples");el.dataset.code=code;el.addEventListener("click",function(){select(code,true)})}
-  else{el.setAttribute("aria-hidden","true")}
-  map.appendChild(el);
-});
-["UP","GJ","DL","BR"].forEach(function(code){
-  var s=STATES[code];
-  var a=document.createElement("article");
-  a.className="state"; a.id="st-"+code; a.dataset.code=code;
-  a.innerHTML='<div class="top"><h3>'+esc(s.name)+'</h3><span class="yr">'+esc(s.yr)+'</span></div>'+
-    '<div class="nums"><div><b>'+s.acs+'</b><span>constituencies</span></div><div><b>'+s.rounds+'</b><span>survey round'+(s.rounds==="1"?"":"s")+'</span></div><div><b>'+esc(s.samples)+'</b><span>samples</span></div></div>'+
-    '<p>'+esc(s.note)+'</p>'+(s.extra?'<div class="extra">'+esc(s.extra)+'</div>':'');
-  a.addEventListener("mouseenter",function(){select(code,false)});
-  statesEl.appendChild(a);
-});
-function select(code,scroll){
-  document.querySelectorAll(".tile.on,.state").forEach(function(e){e.classList.toggle("sel",e.dataset.code===code)});
-  if(scroll && window.matchMedia("(max-width:860px)").matches){
-    var el=document.getElementById("st-"+code); if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
-  }
-}
-select("DL",false);
-
-/* booking cards */
-var sess=document.getElementById("sessions");
-SESSIONS.forEach(function(s){
-  var link=BOOKING[s.key];
-  var d=document.createElement("article"); d.className="session";
-  d.innerHTML='<span class="len">'+esc(s.len)+'</span><h3>'+esc(s.title)+'</h3><span class="who">'+esc(s.who)+'</span><p>'+esc(s.body)+'</p>'+
-    (link ? '<a class="btn primary" href="'+esc(link)+'" target="_blank" rel="noopener">Choose a time</a>'
-          : '<button class="btn ghost" type="button" data-copy="email">Copy email to schedule</button><span class="soon">Online booking opens soon</span>');
-  sess.appendChild(d);
-});
-
-/* copy buttons */
-document.addEventListener("click",function(e){
-  var b=e.target.closest("button[data-copy]"); if(!b) return;
-  var src=document.getElementById(b.dataset.copy); if(!src) return;
-  var text=src.textContent.trim(), label=b.textContent;
-  function done(msg){b.textContent=msg;setTimeout(function(){b.textContent=label},1600)}
-  function fallback(){try{var r=document.createRange();r.selectNodeContents(src);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);done("Selected")}catch(_){}}
-  try{
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done("Copied")},fallback)}
-    else fallback();
-  }catch(_){fallback()}
-});
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
